@@ -3,6 +3,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
 
+    -- get current working directory
     local function get_short_cwd()
       return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
     end
@@ -78,7 +79,7 @@ return {
       a = {
         gui = "bold",
         bg = new_colors.yellow,
-        fg = new_colors.black, -- black
+        fg = new_colors.black,
       },
     }
 

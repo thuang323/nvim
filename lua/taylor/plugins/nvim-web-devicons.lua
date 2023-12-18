@@ -1,6 +1,8 @@
 return {
   "nvim-tree/nvim-web-devicons",
   config = function()
+
+    -- create assembly icon
     local asm = {
       icon = "",
       color = "#ff6f3f",
