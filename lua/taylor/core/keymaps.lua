@@ -53,16 +53,16 @@ keymap.set("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
 
 -- hydra mapping
 
--- local Hydra = require("hydra")
+local Hydra = require("hydra")
 
--- Hydra({
---	name = "windowsResize",
---	mode = "n",
---	body = "<C-w>",
---	heads = {
---		{ "+", "<C-w>+" },
---		{ "-", "<C-w>-" },
---		{ "<", "<C-w>3<" },
---		{ ">", "<C-w>3>" },
---	},
--- })
+Hydra({
+ name = "windowsResize",
+ mode = "n",
+ body = "<C-w>",
+ heads = {
+ 	{ "+", "<C-w>+" },
+ 	{ "-", "<C-w>-" },
+ 	{ "<", "<C-w>3<" },
+ 	{ ">", "<C-w>3>" },
+ },
+})
