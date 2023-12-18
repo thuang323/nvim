@@ -8,7 +8,52 @@ return {
       return vim.fn.fnamemodify(vim.fn.getcwd(), ':~')
     end
 
-    local lualine_nightfly = require("lualine.themes.nightfly")
+    -- customize colors
+    local colors = {
+      blue = "#65D1FF",
+      green = "#3EFFDC",
+      violet = "#FF61EF",
+      yellow = "#FFDA7B",
+      red = "#FF4A4A",
+      fg = "#c3ccdc",
+      bg = "#2d3041",
+      inactive_bg = "#2c3043",
+    }
+
+    -- customize lualine theme
+    local lualine_theme = {
+      normal = {
+        a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg },
+        c = { bg = colors.bg, fg = colors.fg },
+      },
+      insert = {
+        a = { bg = colors.green, fg = colors.bg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg },
+        c = { bg = colors.bg, fg = colors.fg },
+      },
+      visual = {
+        a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg },
+        c = { bg = colors.bg, fg = colors.fg },
+      },
+      command = {
+        a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg },
+        c = { bg = colors.bg, fg = colors.fg },
+      },
+      replace = {
+        a = { bg = colors.red, fg = colors.bg, gui = "bold" },
+        b = { bg = colors.bg, fg = colors.fg },
+        c = { bg = colors.bg, fg = colors.fg },
+      },
+      inactive = {
+        a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
+        b = { bg = colors.inactive_bg, fg = colors.semilightgray },
+        c = { bg = colors.inactive_bg, fg = colors.semilightgray },
+      },
+    }
+
     local lazy_stats = require("lazy.stats")
 
     -- my customize neo-tree status line
@@ -22,9 +67,6 @@ return {
         lualine_b = { get_short_cwd },
         lualine_c = {},
         lualine_x = {
-          function()
-            return "utf-8"
-          end,
           { "fileformat", symbols = { unix = "" } },
           function()
             return "neo-tree 󰙅"
@@ -37,8 +79,8 @@ return {
     }
 
     -- my customize lazy status line
-    local lazy_extension = { 
-      sections = { 
+    local lazy_extension = {
+      sections = {
         lualine_a = {
           function()
             return "lazy 💤"
@@ -50,9 +92,6 @@ return {
           end,
         },
         lualine_x = {
-          function()
-            return "utf-8"
-          end,
           { "fileformat", symbols = { unix = "" } },
           function()
             return "lazy 💤"
@@ -64,28 +103,27 @@ return {
       filetypes = {"lazy"},
     }
 
-    local new_colors = {
-      blue = "#65D1FF",
-      green = "#3EFFDC",
-      violet = "#FF61EF",
-      yellow = "#FFDA7B",
-      black = "#000000",
+    -- my customize telescope status line
+    local telescope_extension = {
+      sections = {
+        lualine_a = {"mode"},
+        lualine_b = {"branch"},
+        lualine_x = {
+          { "fileformat", symbols = { unix = "" } },
+          function()
+            return "TelescopePrompt "
+          end,
+        },
+        lualine_y = {"progress"},
+        lualine_z = {"location"}
+      },
+      filetypes = {"TelescopePrompt"},
     }
 
-    lualine_nightfly.normal.a.bg = new_colors.blue
-    lualine_nightfly.insert.a.bg = new_colors.green
-    lualine_nightfly.visual.a.bg = new_colors.violet
-    lualine_nightfly.command = {
-      a = {
-        gui = "bold",
-        bg = new_colors.yellow,
-        fg = new_colors.black,
-      },
-    }
 
     require("lualine").setup({
       options = {
-        theme = lualine_nightfly,
+        theme = lualine_theme,
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -111,7 +149,7 @@ return {
         lualine_y = {""},
         lualine_z = {""},
       },
-      extensions = {lazy_extension, neo_tree_extension},
+      extensions = {lazy_extension, neo_tree_extension, telescope_extension},
     })
   end,
 }

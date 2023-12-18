@@ -14,6 +14,8 @@ return {
         variables = "none",
       },
       highlights = {
+
+        -- Telescope
         TelescopeNormal = { bg = "#0d0b0b" },
         -- TelescopeBorder = { fg = "", bg = "#0d0b0b" },
         TelescopePromptBorder = { fg = "#0d0b0b", bg = "#101012" },
