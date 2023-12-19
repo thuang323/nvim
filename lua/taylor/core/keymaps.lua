@@ -42,19 +42,18 @@ keymap.set("n", "<leader>ef", ":Neotree reveal<CR>")
 -- undo-tree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-
 -- hydra mapping
 
 local Hydra = require("hydra")
 
 Hydra({
- name = "windowsResize",
- mode = "n",
- body = "<C-w>",
- heads = {
- 	{ "+", "<C-w>+" },
- 	{ "-", "<C-w>-" },
- 	{ "<", "<C-w>3<" },
- 	{ ">", "<C-w>3>" },
- },
+	name = "windowsResize",
+	mode = "n",
+	body = "<C-w>",
+	heads = {
+		{ "+", "<C-w>+" },
+		{ "-", "<C-w>-" },
+		{ "<", "<C-w>3<" },
+		{ ">", "<C-w>3>" },
+	},
 })
