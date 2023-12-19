@@ -119,6 +119,56 @@ return {
 			filetypes = { "TelescopePrompt" },
 		}
 
+		local toggle_extension = {
+			sections = {
+				lualine_a = {
+					function()
+						return "ToggleTerm "
+					end,
+				},
+				lualine_x = {
+					{ "fileformat", symbols = { unix = "" } },
+					function()
+						return "ToggleTerm "
+					end,
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			filetypes = { "toggleterm" },
+		} --
+
+		local alpha_extension = {
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch" },
+				lualine_x = {
+					{ "fileformat", symbols = { unix = "" } },
+					function()
+						return "Home "
+					end,
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			filetypes = { "alpha" },
+		}
+
+		local mason_extension = {
+			sections = {
+				lualine_a = { "mode" },
+				lualine_x = {
+					{ "fileformat", symbols = { unix = "" } },
+					function()
+						return "mason "
+					end,
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			filetypes = { "mason" },
+		}
+
 		require("lualine").setup({
 			options = {
 				theme = lualine_theme,
@@ -147,7 +197,14 @@ return {
 				lualine_y = { "" },
 				lualine_z = { "" },
 			},
-			extensions = { lazy_extension, neo_tree_extension, telescope_extension },
+			extensions = {
+				lazy_extension,
+				neo_tree_extension,
+				telescope_extension,
+				toggle_extension,
+				alpha_extension,
+				mason_extension,
+			},
 		})
 	end,
 }
