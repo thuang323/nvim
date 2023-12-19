@@ -154,6 +154,28 @@ return {
 			filetypes = { "alpha" },
 		}
 
+		local harpoon_extension = {
+			sections = {
+				lualine_a = {
+					function()
+						return "Harpoon Menu"
+					end,
+				},
+				lualine_b = {
+					"branch",
+				},
+				lualine_x = {
+					{ "fileformat", symbols = { unix = "" } },
+					function()
+						return "harpoon 󱓞"
+					end,
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			filetypes = { "harpoon" },
+		}
+
 		local mason_extension = {
 			sections = {
 				lualine_a = { "mode" },
@@ -203,6 +225,7 @@ return {
 				telescope_extension,
 				toggle_extension,
 				alpha_extension,
+				harpoon_extension,
 				mason_extension,
 			},
 		})

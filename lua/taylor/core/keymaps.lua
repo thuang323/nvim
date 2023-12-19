@@ -42,8 +42,11 @@ keymap.set("n", "<leader>ef", ":Neotree reveal<CR>")
 -- undo-tree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
---
+-- whichkey
 keymap.set("n", "<leader>w", ":WhichKey<CR>")
+
+-- LazyUI
+keymap.set("n", "<leader>L", ":Lazy<CR>")
 
 -- hydra mapping
 
