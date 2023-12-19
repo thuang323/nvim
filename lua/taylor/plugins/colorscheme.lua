@@ -24,6 +24,9 @@ return {
 				TelescopePromptTitle = { fg = "#000000", bg = "#efbd5d" },
 				TelescopeResultsTitle = { fg = "#000000", bg = "#db8ad6" },
 				TelescopePreviewTitle = { fg = "#000000", bg = "#aae6b2" },
+
+				-- WhichKey
+				WhichKeyFloat = { bg = "#0d0b0b" },
 			},
 		})
 		require("onedark").load()

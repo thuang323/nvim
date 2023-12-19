@@ -13,4 +13,18 @@ return {
 	{ "lewis6991/gitsigns.nvim", config = true },
 	"stevearc/dressing.nvim", -- better UI for telescope
 	{ "kdheepak/lazygit.nvim", dependencies = "nvim-lua/plenary.nvim" }, -- lazygit
+	{
+		-- vimtex:
+		-- <localleader> ll -> to compile
+		-- <localleader> lv -> to view
+		-- <localleader> lk -> to stop
+		"lervag/vimtex",
+		ft = "tex",
+		config = function()
+			vim.g.maplocalleader = " "
+			vim.g.vimtex_view_method = "sioyek"
+			vim.g.vimtex_quickfix_open_on_warning = 0
+			vim.g.vimtex_format_enabled = 1
+		end,
+	},
 }

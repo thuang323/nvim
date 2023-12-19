@@ -42,6 +42,9 @@ keymap.set("n", "<leader>ef", ":Neotree reveal<CR>")
 -- undo-tree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+--
+keymap.set("n", "<leader>w", ":WhichKey<CR>")
+
 -- hydra mapping
 
 local Hydra = require("hydra")
