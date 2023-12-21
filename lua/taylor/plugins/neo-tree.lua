@@ -47,6 +47,7 @@ return {
 				mappings = {
 					["/"] = "none",
 					["."] = "none",
+					["<C-c>"] = "cancel",
 					["O"] = "set_root", -- change to child directory
 					["<bs>"] = "navigate_up", -- (backspace) change to child directory
 					["z"] = "none",
