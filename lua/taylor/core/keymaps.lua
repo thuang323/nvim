@@ -48,6 +48,10 @@ keymap.set("n", "<leader>w", ":WhichKey<CR>")
 -- LazyUI
 keymap.set("n", "<leader>L", ":Lazy<CR>")
 
+-- LiveServer
+keymap.set("n", "<leader>ls", ":LiveServerStart<CR>")
+keymap.set("n", "<leader>le", ":LiveServerStop<CR>")
+
 -- hydra mapping
 
 local Hydra = require("hydra")
