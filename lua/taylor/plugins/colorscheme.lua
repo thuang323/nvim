@@ -14,10 +14,11 @@ return {
 				variables = "none",
 			},
 			highlights = {
+				-- lsp pop up window
+				NormalFloat = { bg = "#101012" },
 
 				-- Telescope
 				TelescopeNormal = { bg = "#0d0b0b" },
-				-- TelescopeBorder = { fg = "", bg = "#0d0b0b" },
 				TelescopePromptBorder = { fg = "#0d0b0b", bg = "#101012" },
 				TelescopeResultsBorder = { fg = "#0d0b0b", bg = "#101012" },
 				TelescopePreviewBorder = { fg = "#0d0b0b", bg = "#101012" },
