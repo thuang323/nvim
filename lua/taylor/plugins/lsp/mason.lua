@@ -19,7 +19,6 @@ return {
 				"clangd", -- C or C++
 				"jdtls", -- Java
 				"pyright", -- python
-				-- "r_language_server", -- R
 				"lua_ls", -- lua
 				"texlab", -- LaTeX
 			},
