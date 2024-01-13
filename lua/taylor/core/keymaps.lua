@@ -9,8 +9,8 @@ keymap.set("i", "<C-c>", "<ESC>")
 
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- non highlight
 
-keymap.set("n", "<leader>t", ":tabnew<CR>") -- new tab in vim
-keymap.set("n", "<leader>o", ":tabclose<CR>") -- close tab in vim
+keymap.set("n", "<leader>to", ":tabnew<CR>") -- new tab in vim
+keymap.set("n", "<leader>tc", ":tabclose<CR>") -- close tab in vim
 keymap.set("n", "<leader>]", ":tabnext<CR>") -- go to next tab
 keymap.set("n", "<leader>[", ":tabprevious<CR>") -- go to prev tab
 
@@ -47,6 +47,9 @@ keymap.set("n", "<leader>w", ":WhichKey<CR>")
 
 -- LazyUI
 keymap.set("n", "<leader>L", ":Lazy<CR>")
+
+-- Obsidian
+keymap.set("n", "<leader>o", ":ObsidianOpen<CR>")
 
 -- LiveServer
 keymap.set("n", "<leader>ls", ":LiveServerStart<CR>")
