@@ -39,6 +39,9 @@ return {
 					never_show = {
 						".DS_Store",
 					},
+					never_show_by_pattern = { -- uses glob style patterns
+						".undodir*",
+					},
 				},
 				use_libuv_file_watcher = true,
 			},

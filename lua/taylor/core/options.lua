@@ -33,7 +33,7 @@ opt.sidescrolloff = 10
 opt.mousescroll = "ver:1,hor:3"
 
 opt.undofile = true
-opt.undodir = "~/.undodir"
+opt.undodir = ".undodir"
 opt.updatetime = 250
 
 -- backspace
