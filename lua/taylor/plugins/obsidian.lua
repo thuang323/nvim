@@ -7,12 +7,6 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		-- local function get_short_cwd()
-		-- 	return vim.fn.fnamemodify(vim.fn.getcwd())
-		-- end
-		--
-		--   print(get_short_cwd())
-
 		local obsidian = require("obsidian")
 		obsidian.setup({
 			workspaces = {
@@ -29,7 +23,6 @@ return {
 					-- },
 				},
 			},
-			-- dir = vim.fn.getcwd(),
 			detect_cwd = true,
 			notes_subdir = "",
 			completion = {
@@ -42,6 +35,7 @@ return {
 				-- Where to put new notes created from completion. Valid options are
 				--  * "current_dir" - put new notes in same directory as the current buffer.
 				--  * "notes_subdir" - put new notes in the default notes subdirectory.
+				-- Having obsidian apps will somehow overwrite the new notes location
 				new_notes_location = "current_dir",
 
 				-- Control how wiki links are completed with these (mutually exclusive) options:
