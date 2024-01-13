@@ -28,6 +28,7 @@ return {
 				"cpp",
 				"java",
 				"python",
+				"markdown",
 			},
 			-- auto install above language parsers
 			auto_install = true,
