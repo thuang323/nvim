@@ -41,6 +41,11 @@ return {
 					},
 					never_show_by_pattern = { -- uses glob style patterns
 						".undodir*",
+						"*.aux",
+						"*.log",
+						"*.synctex.gz",
+						"*.fls",
+						"*.fdb_latexmk",
 					},
 				},
 				use_libuv_file_watcher = true,
