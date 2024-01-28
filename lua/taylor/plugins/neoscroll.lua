@@ -19,8 +19,8 @@ return {
 
 		local t = {}
 		-- Syntax: t[keys] = {function, {function arguments}}
-		t["K"] = { "scroll", { "-4", "true", "20" } }
-		t["J"] = { "scroll", { "4", "true", "20" } }
+		t["<C-u>"] = { "scroll", { "5", "true", "20" } }
+		t["<C-d>"] = { "scroll", { "5", "true", "20" } }
 
 		require("neoscroll.config").set_mappings(t)
 	end,
