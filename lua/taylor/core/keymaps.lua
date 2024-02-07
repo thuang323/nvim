@@ -38,7 +38,7 @@ keymap.set("n", "N", "Nzzzv") -- center the previous search word
 keymap.set("x", "<leader>p", '"_dP')
 
 -- toggleterm
-keymap.set("t", "<Esc>", "<C-\\><C-n>")
+keymap.set("t", "<M-v>", "<C-\\><C-n>")
 
 -- neo-tree
 keymap.set("n", "<leader>er", ":Neotree toggle<CR>")
