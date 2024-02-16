@@ -1,6 +1,7 @@
 return {
 	-- some essential plugins that don't have to do extra config
 	"nvim-lua/plenary.nvim",
+	"norcalli/nvim-colorizer.lua",
 	"christoomey/vim-tmux-navigator",
 	"anuvyklack/hydra.nvim",
 	"tpope/vim-surround",

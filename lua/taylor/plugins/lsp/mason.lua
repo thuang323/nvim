@@ -2,26 +2,35 @@ return {
 	"williamboman/mason.nvim",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
+		"jayp0521/mason-null-ls.nvim",
 	},
 	config = function()
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
+		local mason_null = require("mason-null-ls")
 
 		mason.setup()
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"tsserver", -- JavaScript
+				"tsserver",
 				"html",
 				"cssls",
 				"tailwindcss",
-				"clangd", -- C or C++
-				"jdtls", -- Java
-				"pyright", -- python
-				"lua_ls", -- lua
-				"texlab", -- LaTeX
+				"emmet_ls",
+				"clangd",
+				"jdtls",
+				"pyright",
+				"lua_ls",
+				"texlab",
 			},
+			mason_null.setup({
+				ensure_installed = {
+					"black",
+					"prettier",
+				},
+			}),
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
 		})
