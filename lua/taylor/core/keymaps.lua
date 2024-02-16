@@ -60,6 +60,10 @@ keymap.set("n", "<leader>o", ":ObsidianOpen<CR>")
 keymap.set("n", "<leader>ls", ":LiveServerStart<CR>")
 keymap.set("n", "<leader>le", ":LiveServerStop<CR>")
 
+-- Colortils
+keymap.set("n", "<leader>cp", ":Colortils picker<CR>")
+keymap.set("n", "<leader>cl", ":Colortils css list<CR>")
+
 -- hydra mapping
 
 local Hydra = require("hydra")

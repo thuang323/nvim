@@ -7,7 +7,7 @@ return {
 	config = function()
 		local live_server = require("live_server")
 		live_server.setup({
-			browser_command = "Google Chrome",
+			browser_command = "firefox",
 		})
 	end,
 }

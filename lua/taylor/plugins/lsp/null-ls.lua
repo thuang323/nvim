@@ -2,7 +2,8 @@ return {
 	"jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
 	dependencies = {
 		"williamboman/mason.nvim",
-		"jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
+		"jayp0521/mason-null-ls.nvim",
+		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		local null_ls = require("null-ls")
@@ -17,7 +18,7 @@ return {
 			sources = {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes = {}})" (see null-ls docs)
-				-- formatting.black,
+				formatting.black,
 				formatting.prettier, -- js/ts formatter
 				formatting.stylua, -- lua formatter
 				diagnostics.eslint_d.with({ -- js/ts linter
@@ -28,24 +29,24 @@ return {
 				}),
 			},
 			-- configure format on save
-			on_attach = function(current_client, bufnr)
-				if current_client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({
-								filter = function(client)
-									--  only use null-ls for formatting instead of lsp server
-									return client.name == "null-ls"
-								end,
-								bufnr = bufnr,
-							})
-						end,
-					})
-				end
-			end,
+				on_attach = function(current_client, bufnr)
+					if current_client.supports_method("textDocument/formatting") then
+						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							group = augroup,
+							buffer = bufnr,
+							callback = function()
+								vim.lsp.buf.format({
+									filter = function(client)
+										--  only use null-ls for formatting instead of lsp server
+										return client.name == "null-ls"
+									end,
+									bufnr = bufnr,
+								})
+							end,
+						})
+					end
+				end,
 		})
 	end,
 }
