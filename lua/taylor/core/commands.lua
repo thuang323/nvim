@@ -1,26 +1,3 @@
--- -- disable highlight when cursor moves
--- vim.api.nvim_set_keymap("n", "<Plug>(StopHL)", "execute('nohlsearch')[-1]", { noremap = true, expr = true })
--- vim.api.nvim_set_keymap("i", "<Plug>(StopHL)", "execute('nohlsearch')[-1]", { noremap = true, expr = true })
---
--- function HlSearch()
--- 	local pos = vim.fn.match(vim.fn.getline("."), vim.fn.getreg("/"), vim.fn.col(".") - 1) + 1
--- 	if pos ~= vim.fn.col(".") then
--- 		StopHL()
--- 	end
--- end
---
--- function StopHL()
--- 	if not vim.v.hlsearch or vim.fn.mode() ~= "n" then
--- 		return
--- 	else
--- 		vim.cmd([[silent! call feedkeys("\<Plug>(StopHL)", 'm')]])
--- 	end
--- end
---
--- local searchHighlightGrp = vim.api.nvim_create_augroup("SearchHighlight", { clear = true })
--- vim.api.nvim_create_autocmd({ "CursorMoved" }, { group = searchHighlightGrp, pattern = "*", callback = HlSearch })
--- vim.api.nvim_create_autocmd({ "InsertEnter" }, { group = searchHighlightGrp, pattern = "*", callback = StopHL })
---
 -- nohlsearch when cursor moves or enters insert mode
 vim.cmd([[
 noremap <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
@@ -47,3 +24,46 @@ au!
     au InsertEnter * call StopHL()
 augroup end
 ]])
+
+-- go to last loc when opening a buffer
+local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
+vim.api.nvim_clear_autocmds({ group = lastplace })
+vim.api.nvim_create_autocmd("BufReadPost", {
+	group = lastplace,
+	pattern = { "*" },
+	desc = "remember last cursor place",
+	callback = function()
+		local mark = vim.api.nvim_buf_get_mark(0, '"')
+		local lcount = vim.api.nvim_buf_line_count(0)
+		if mark[1] > 0 and mark[1] <= lcount then
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+})
+
+-- go to last loc for harpoon
+local harpoon = require("harpoon")
+vim.api.nvim_create_autocmd({ "BufLeave", "ExitPre" }, {
+	pattern = "*",
+	callback = function()
+		local filename = vim.fn.expand("%:p:.")
+		local harpoon_marks = harpoon:list().items
+		for _, mark in ipairs(harpoon_marks) do
+			if mark.value == filename then
+				mark.context.row = vim.fn.line(".")
+				mark.context.col = vim.fn.col(".")
+				return
+			end
+		end
+	end,
+})
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({
+			-- higroup = "Visual",
+			timeout = 200,
+		})
+	end,
+})
