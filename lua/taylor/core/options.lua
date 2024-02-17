@@ -51,3 +51,7 @@ opt.iskeyword:append("-")
 vim.diagnostic.config({
 	virtual_text = false,
 })
+
+if vim.fn.has("nvim-0.10") == 1 then
+	opt.smoothscroll = true
+end
