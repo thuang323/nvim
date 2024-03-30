@@ -106,6 +106,14 @@ return {
 		lspconfig["pyright"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				python = {
+					analysis = {
+						typeCheckingMode = "standard",
+						diagnosticMode = "workspace",
+					},
+				},
+			},
 		})
 
 		-- configure LaTeX server
