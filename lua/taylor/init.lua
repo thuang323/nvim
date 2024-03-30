@@ -1,4 +1,4 @@
-vim.g.mapleader = " " -- set local mapleader before loading lazy
+require("taylor.core.options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,3 +17,6 @@ require("lazy").setup({
 	{ import = "taylor.plugins" },
 	{ import = "taylor.plugins.lsp" },
 })
+
+require("taylor.core.keymaps")
+require("taylor.core.commands")

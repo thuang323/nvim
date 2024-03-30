@@ -1,5 +1,7 @@
 local opt = vim.opt -- for conciseness
 
+vim.g.mapleader = " " -- set local mapleader before loading lazy
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true
@@ -7,9 +9,9 @@ opt.number = true
 -- tabs & indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
--- opt.softtabstop = 2
+opt.softtabstop = 2
 opt.expandtab = true
--- opt.shiftround = true
+opt.shiftround = true
 opt.autoindent = true
 opt.smartindent = true
 

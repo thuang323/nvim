@@ -129,6 +129,14 @@ return {
 			settings = { -- custom settings for lua
 				Lua = {
 					-- make the language server recognize "vim" global
+					format = {
+						enable = true,
+						defaultConfig = {
+							indent_style = "space",
+							indent_size = "2",
+							quote_style = "double",
+						},
+					},
 					diagnostics = {
 						globals = { "vim" },
 					},

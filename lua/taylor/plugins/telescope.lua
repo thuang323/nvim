@@ -14,8 +14,8 @@ return {
 					i = {
 						["<C-p>"] = actions.move_selection_previous, -- move to previous result
 						["<C-n>"] = actions.move_selection_next, -- move to next result
-						["<C-j>"] = actions.preview_scrolling_down, -- preview window scrolling down
-						["<C-k>"] = actions.preview_scrolling_up, -- preview window scrolling up
+						-- ["<C-j>"] = actions.preview_scrolling_down, -- preview window scrolling down
+						-- ["<C-k>"] = actions.preview_scrolling_up, -- preview window scrolling up
 						["<C-q"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
 					},
 				},

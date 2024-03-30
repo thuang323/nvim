@@ -4,6 +4,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"jayp0521/mason-null-ls.nvim",
 	},
+	priority = 1000,
 	config = function()
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
