@@ -15,7 +15,7 @@ return {
           variables = {},
           -- Background styles. Can be "dark", "transparent" or "normal"
           sidebars = "dark", -- style for sidebars, see below
-          floats = "dark", -- style for floating windows
+          floats = "dark",   -- style for floating windows
         },
       })
       -- vim.cmd("colorscheme tokyonight")
