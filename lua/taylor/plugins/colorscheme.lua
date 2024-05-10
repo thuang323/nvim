@@ -119,6 +119,7 @@ return {
             ["@punctuation.bracket"] = { link = "Delimiter" },
             ["@variable.parameter"] = { fg = colors.red },
             ["@variable.member"] = { fg = colors.red },
+            ["@keyword.operator"] = { fg = colors.purple },
 
             ["@number"] = { fg = colors.orange },
 
