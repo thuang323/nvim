@@ -2,10 +2,15 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
--- general keymaps
+-- some helpful vim keybindings
+-- 1. change a word with multiple occurences once in a file
+--    :%s/original/new/g
+-- 2. change a word with multiple occurences once in the visual line mode
+--    :s/old_word/new_word/g
 
-keymap.set("i", "jk", "<ESC>")
-keymap.set("i", "<C-c>", "<ESC>")
+-- general keymaps
+keymap.set("i", "jk", "<Esc>")
+keymap.set("i", "<C-c>", "<Esc>")
 
 keymap.set("n", "<leader>nh", "<cmd>nohl<CR>") -- non highlight
 
@@ -16,19 +21,18 @@ keymap.set("n", "<leader>[", "<cmd>tabprevious<CR>") -- go to prev tab
 
 keymap.set("n", "x", '"_x')
 
-keymap.set("n", "<M-d>a", "ggVG") -- command a
+keymap.set("n", "<M-a>", "ggVGy") -- command a
+keymap.set({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true }) -- delete a word
+keymap.set({ "i", "c" }, "<D-bs>", "<C-u>", { remap = true }) -- delete curr line up to cursor
 keymap.set("x", "+", "<C-a>g") -- increment line of numbers
 keymap.set("x", "-", "<C-x>g") -- decrement line of numbers
 
-keymap.set({ "n", "x" }, "<C-a>", "ggVGy") -- select all and copy
+-- keymap.set({ "n", "x" }, "<C-a>", "ggVGy") -- select all and copy
 keymap.set({ "n", "x" }, "<C-d>", "5j") -- scroll down by relative number and center
 keymap.set({ "n", "x" }, "<C-u>", "5k") -- scroll down by relative number and center
 
 keymap.set("x", "<C-.>", ">gv") -- adding indent
 keymap.set("x", "<C-,>", "<gv") -- delete indent
-
--- keymap.set("n", "n", "nzzzv") -- center the next search word
--- keymap.set("n", "N", "Nzzzv") -- center the previous search word
 
 keymap.set("n", "<C-j>", "<cmd>cnext<CR>")
 keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
@@ -38,11 +42,36 @@ keymap.set({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
 
 keymap.set("x", "<leader>p", '"_dP')
 
+-- telescope
+keymap.set("n", "<C-p>", "<cmd>Telescope<cr>")
+keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
+keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
+keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
+keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
+keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<cr>")
+keymap.set("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
+keymap.set("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
+keymap.set("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
+
+-- comment
+keymap.set("n", "<M-/>", "<Plug>(comment_toggle_linewise_current)")
+keymap.set("x", "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
+-- `gco` - Insert comment to the next line and enters INSERT mode
+-- `gcA` - Insert comment to end of the current line and enters INSERT mode
+-- `gcw` - Toggle from the current cursor position to the next word
+-- `gc}` - Toggle until the next blank line
+-- `gca{` - Toggle around curly brackets
+-- `gci{` - Toggle inside curly brackets
+
 -- toggleterm
 keymap.set("t", "<M-v>", "<C-\\><C-n>")
+keymap.set("t", "<Esc>", "<C-\\><C-n>")
+keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
+keymap.set({ "n", "t" }, "<M-\\>", "<cmd>ToggleTerm<CR>")
 
 -- neo-tree
 keymap.set("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
+keymap.set("n", "<M-b>", "<cmd>Neotree toggle<CR>")
 keymap.set("n", "<leader>ef", "<cmd>Neotree focus<CR>")
 keymap.set("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 

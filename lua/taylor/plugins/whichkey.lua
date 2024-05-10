@@ -16,8 +16,8 @@ return {
 				zindex = 1000, -- positive value to position WhichKey above other floating windows.
 			},
 			popup_mappings = {
-				scroll_down = "<c-j>", -- binding to scroll down inside the popup
-				scroll_up = "<c-k>", -- binding to scroll up inside the popup
+				scroll_down = "<c-d>", -- binding to scroll down inside the popup
+				scroll_up = "<c-u>", -- binding to scroll up inside the popup
 			},
 			layout = {
 				height = { min = 4, max = 10 }, -- min and max height of the columns
