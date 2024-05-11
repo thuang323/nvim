@@ -80,13 +80,15 @@ return {
             Search = { fg = normalbg, bg = "#f2cc81" },
             IncSearch = { fg = normalbg, bg = "#dd9046" },
             CurSearch = { link = "IncSearch" },
+            -- CursorLine = { bg = "#29292b" },
+            CursorLine = { bg = "#252527" },
             TabLineFill = { link = "Search" },
 
 
             -- Syntax
             Constant = { fg = colors.orange },
             String = { fg = colors.green },
-            Character = { fg = colors.green },
+            Character = { fg = colors.orange },
             Identifier = { fg = colors.fg },
             Function = { fg = colors.blue, style = "italic" },
             Statement = { fg = colors.purple },
@@ -126,6 +128,7 @@ return {
             ["@lsp.type.property"] = { fg = colors.cyan },
             ["@lsp.type.macro"] = { fg = colors.cyan },
             ["@lsp.type.parameter"] = { fg = colors.red },
+            ["@lsp.typemod.variable.static"] = { fg = colors.orange },
             ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
 
 
@@ -235,12 +238,10 @@ return {
             DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
             DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
 
-            DiagnosticUnderlineOk = { link = "DiagnosticOk", style = "undercurl" },
-            DiagnosticUnderlineError = { link = "DiagnosticError", style = "undercurl" },
-            DiagnosticUnderlineWarn = { link = "DiagnosticWarn", style = "undercurl" },
-            DiagnosticUnderlineInfo = { link = "DiagnosticInfo", style = "undercurl" },
-            DiagnosticUnderlineHint = { link = "DiagnosticHint", style = "undercurl" },
-
+            DiagnosticUnderlineError = { fg = "NONE", sp = colors.red, style = "undercurl" },
+            DiagnosticUnderlineWarn = { fg = "NONE", sp = colors.yellow, style = "undercurl" },
+            DiagnosticUnderlineInfo = { fg = "NONE", sp = colors.cyan, style = "undercurl" },
+            DiagnosticUnderlineHint = { fg = "NONE", sp = colors.purple, style = "undercurl" },
 
             -- Bufferline
             BufferLineSeparator = { fg = colors.grey },
@@ -257,6 +258,30 @@ return {
             BufferLineErrorDiagnosticSelected = { fg = colors.red, style = "italic" },
             BufferLineIndicatorSelected = { fg = colors.blue, style = "italic" },
 
+            -- trouble
+            TroubleCount = { fg = colors.fg, bg = colors.bg },
+            -- TroubleError = {},
+            TroubleNormal = { link = "TelescopeNormal" },
+            -- TroubleTextInformation = {},
+            -- TroubleSignWarning = {},
+            -- TroubleLocation = {},
+            -- TroubleWarning = {},
+            -- TroublePreview = {},
+            -- TroubleTextError = {},
+            -- TroubleSignInformation = {},
+            -- TroubleIndent = {},
+            -- TroubleSource = {},
+            -- TroubleSignHint = {},
+            -- TroubleSignOther = {},
+            -- TroubleFoldIcon = {},
+            -- TroubleTextWarning = {},
+            -- TroubleCode = {},
+            -- TroubleInformation = {},
+            -- TroubleSignError = {},
+            -- TroubleFile = {},
+            -- TroubleHint = {},
+            -- TroubleTextHint = {},
+            -- TroubleText = {},
           }
         }
       })

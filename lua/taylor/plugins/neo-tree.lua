@@ -18,13 +18,12 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = "", -- NOTE: you can set any of these to an empty string to not show them
+            added = "✚", -- NOTE: you can set any of these to an empty string to not show them
             -- added     = "✚", -- NOTE: you can set any of these to an empty string to not show them
             deleted = "✖",
             -- modified  = "",
-            modified = "",
+            modified = "󰈅",
             renamed = "󰁕",
-            -- Status type
             untracked = "",
             ignored = "",
             unstaged = "󰄱",
