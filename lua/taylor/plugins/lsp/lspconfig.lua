@@ -27,7 +27,7 @@ return {
       end
 
       -- keybind options
-      local opts = { noremap = true, silent = true, buffer = bufnr }
+      local opts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
 
       -- set keybinds
       keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)          -- show definition, references

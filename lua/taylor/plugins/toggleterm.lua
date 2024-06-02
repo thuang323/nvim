@@ -6,7 +6,8 @@ return {
 
     toggleterm.setup({
       size = 20,
-      open_mapping = [[<C-/>]],
+      -- open_mapping = [[<C-/>]],
+      open_mapping = [[<C-\>]],
       persist_size = true,
       direction = "float",
       close_on_exit = true, -- close the terminal window when the process exits
