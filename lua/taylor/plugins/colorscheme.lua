@@ -122,6 +122,8 @@ return {
             ["@variable.parameter"] = { fg = colors.red },
             ["@variable.member"] = { fg = colors.red },
             ["@keyword.operator"] = { fg = colors.purple },
+            ["@tag.attribute"] = { fg = colors.orange },
+            ["@tag.delimiter"] = { fg = colors.purple },
 
             ["@number"] = { fg = colors.orange },
 
@@ -129,6 +131,7 @@ return {
             ["@lsp.type.macro"] = { fg = colors.cyan },
             ["@lsp.type.parameter"] = { fg = colors.red },
             ["@lsp.typemod.variable.static"] = { fg = colors.orange },
+            ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.red },
             ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
 
 
