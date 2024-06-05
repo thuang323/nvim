@@ -1,42 +1,42 @@
 return {
-  {
-    "navarasu/onedark.nvim",
-    lazy = false,
-    -- priority = 1000, -- load this plugin first
-    config = function()
-      require("onedark").setup({
-        style = "deep",
-        transparent = false,
-        code_style = {
-          comments = "italic",
-          keywords = "none",
-          functions = "italic",
-          strings = "none",
-          variables = "none",
-        },
-        highlights = {
-          -- lsp pop up window
-          FloatBorder = { bg = "#101012" },
-          -- FloatFooter = { bg = "#101012" },
-          NormalFloat = { bg = "#101012" },
-          Pmenu = { bg = "#101012" },
-
-          -- Telescope
-          TelescopeNormal = { bg = "#0d0b0b" },
-          TelescopePromptBorder = { fg = "#0d0b0b", bg = "#101012" },
-          TelescopeResultsBorder = { fg = "#0d0b0b", bg = "#101012" },
-          TelescopePreviewBorder = { fg = "#0d0b0b", bg = "#101012" },
-          TelescopePromptTitle = { fg = "#000000", bg = "#efbd5d" },
-          TelescopeResultsTitle = { fg = "#000000", bg = "#db8ad6" },
-          TelescopePreviewTitle = { fg = "#000000", bg = "#aae6b2" },
-
-          -- WhichKey
-          WhichKeyFloat = { bg = "#101012" },
-        },
-      })
-      -- require("onedark").load()
-    end,
-  },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   lazy = false,
+  --   priority = 1000, -- load this plugin first
+  --   config = function()
+  --     require("onedark").setup({
+  --       style = "deep",
+  --       transparent = false,
+  --       code_style = {
+  --         comments = "italic",
+  --         keywords = "none",
+  --         functions = "italic",
+  --         strings = "none",
+  --         variables = "none",
+  --       },
+  --       highlights = {
+  --         -- lsp pop up window
+  --         FloatBorder = { bg = "#101012" },
+  --         -- FloatFooter = { bg = "#101012" },
+  --         NormalFloat = { bg = "#101012" },
+  --         Pmenu = { bg = "#101012" },
+  --
+  --         -- Telescope
+  --         TelescopeNormal = { bg = "#0d0b0b" },
+  --         TelescopePromptBorder = { fg = "#0d0b0b", bg = "#101012" },
+  --         TelescopeResultsBorder = { fg = "#0d0b0b", bg = "#101012" },
+  --         TelescopePreviewBorder = { fg = "#0d0b0b", bg = "#101012" },
+  --         TelescopePromptTitle = { fg = "#000000", bg = "#efbd5d" },
+  --         TelescopeResultsTitle = { fg = "#000000", bg = "#db8ad6" },
+  --         TelescopePreviewTitle = { fg = "#000000", bg = "#aae6b2" },
+  --
+  --         -- WhichKey
+  --         WhichKeyFloat = { bg = "#101012" },
+  --       },
+  --     })
+  --     -- require("onedark").load()
+  --   end,
+  -- },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
@@ -49,15 +49,18 @@ return {
         fg = "#e6e6e6",
         white = "#fcfcfc",
         grey = "#7b8496",
-        blue = "#4aacfc",
+        -- blue = "#4aacfc",
+        blue = "#319df5",
         green = "#5eff6c",
         cyan = "#4DF0FF",
         red = "#f65866",
-        yellow = "#fad773",
+        -- yellow = "#fad773",
+        yellow = "#f0c348",
         magenta = "#ff5ef1",
         pink = "#ff5ea0",
         orange = "#f79811",
-        purple = "#cd6beb",
+        -- purple = "#cd6beb",
+        purple = "#c472ed",
       }
 
       local normalbg = "#141415"
@@ -88,7 +91,7 @@ return {
             -- Syntax
             Constant = { fg = colors.orange },
             String = { fg = colors.green },
-            Character = { fg = colors.orange },
+            Character = { fg = colors.green },
             Identifier = { fg = colors.fg },
             Function = { fg = colors.blue, style = "italic" },
             Statement = { fg = colors.purple },
@@ -121,6 +124,7 @@ return {
             ["@punctuation.bracket"] = { link = "Delimiter" },
             ["@variable.parameter"] = { fg = colors.red },
             ["@variable.member"] = { fg = colors.red },
+            ["@variable.builtin"] = { fg = colors.yellow },
             ["@keyword.operator"] = { fg = colors.purple },
             ["@tag.attribute"] = { fg = colors.orange },
             ["@tag.delimiter"] = { fg = colors.purple },
@@ -130,8 +134,39 @@ return {
             ["@lsp.type.property"] = { fg = colors.cyan },
             ["@lsp.type.macro"] = { fg = colors.cyan },
             ["@lsp.type.parameter"] = { fg = colors.red },
+            ["@lsp.type.bracket"] = { fg = colors.purple },
+            -- ["@lsp.type.operator"] = { fg = colors.purple },
+            -- ["@lsp.mod.userDefined"] = { fg = colors.blue },
+            -- ["@lsp.typemod.operator.userDefined"] = { fg = colors.fg },
+            -- ["@lsp.typemod.operator.userDefined"] = { fg = colors.blue },
+            ["@lsp.mod.constructor"] = { fg = colors.blue },
             ["@lsp.typemod.variable.static"] = { fg = colors.orange },
-            ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.red },
+            -- ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.red },
+            ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.yellow },
+            ["@lsp.typemod.property.defaultLibrary"] = { fg = colors.red },
+            ["@lsp.typemod.function.defaultLibrary"] = { fg = colors.cyan },
+
+            -- python highlights
+            ["@variable.python"] = { fg = colors.red },
+            ["@constructor.python"] = { fg = colors.yellow },
+            ["@type.builtin.python"] = { fg = colors.yellow },
+            ["@function.builtin.python"] = { fg = colors.blue },
+
+            ["@odp.base_constructor.python"] = { fg = colors.cyan },
+            ["@odp.import_module.python"] = { fg = colors.fg },
+            ["@odp.constructor.python"] = { link = "@constructor.python" },
+            -- ["@odp.function.builtin.python"] = { fg = colors.blue },
+            -- ["@odp.decorator.python"] = { link = "@function" },
+            -- ["@odp.decorator.function.python"] = { link = "@function" },
+            -- ["@odp.import_from.python"] = { fg = theme.palette.purple, style = config.styles.keywords },
+            -- ["@odp.interpolation.python"] = { fg = theme.palette.red, style = config.styles.parameters },
+            -- ["@odp.keyword.python"] = { style = config.styles.keywords },
+            -- ["@odp.keyword.class.python"] = { link = "@keyword.function.python" },
+            -- ["@odp.operator.splat.python"] = { fg = theme.palette.fg },
+            -- ["@odp.punctuation.special.python"] = { fg = theme.palette.purple },
+
+
+            -- cpp highlights
             ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
 
 
@@ -290,5 +325,12 @@ return {
       })
       vim.cmd("colorscheme cyberdream")
     end,
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000, -- Ensure it loads first
+    -- config = function ()
+    --   vim.cmd("colorscheme onedark")
+    -- end,
   },
 }
