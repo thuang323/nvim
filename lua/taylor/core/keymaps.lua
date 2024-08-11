@@ -28,15 +28,28 @@ keymap.set({ "i", "c" }, "<D-bs>", "<C-u>", { remap = true }) -- delete curr lin
 keymap.set("x", "+", "<C-a>g")                                -- increment line of numbers
 keymap.set("x", "-", "<C-x>g")                                -- decrement line of numbers
 
--- keymap.set({ "n", "x" }, "<C-a>", "ggVGy") -- select all and copy
-keymap.set({ "n", "x" }, "<C-d>", "5j") -- scroll down by relative number and center
-keymap.set({ "n", "x" }, "<C-u>", "5k") -- scroll down by relative number and center
 
-keymap.set("x", "<C-.>", ">gv")         -- adding indent
-keymap.set("x", "<C-,>", "<gv")         -- delete indent
+-- Function to scroll by one-fifth of the window height
+local function scroll(direction)
+  local count = math.floor(vim.api.nvim_win_get_height(0) / 5)
+  if direction == "up" then
+    vim.api.nvim_command("normal! " .. count .. "k")
+  elseif direction == "down" then
+    vim.api.nvim_command("normal! " .. count .. "j")
+  end
+end
+
+vim.keymap.set({ "n", "x" }, "<C-u>", function() scroll("up") end, { noremap = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<C-d>", function() scroll("down") end, { noremap = true, silent = true })
+
+
+
+keymap.set("x", ">", ">gv") -- adding indent
+keymap.set("x", "<", "<gv") -- delete indent
 
 keymap.set("n", "<C-j>", "<cmd>cnext<CR>")
 keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
+
 
 keymap.set({ "n", "x" }, "<leader>cn", "*Ncgn", { remap = true })
 keymap.set({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
@@ -100,8 +113,8 @@ keymap.set("n", "<leader>L", "<cmd>Lazy<CR>")
 -- keymap.set("n", "<leader>o", "<cmd>ObsidianOpen<CR>")
 
 -- LiveServer
-keymap.set("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
-keymap.set("n", "<leader>le", "<cmd>LiveServerStop<CR>")
+-- keymap.set("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
+-- keymap.set("n", "<leader>le", "<cmd>LiveServerStop<CR>")
 
 -- Colortils
 -- keymap.set("n", "<leader>cp", "<cmd>Colortils picker<CR>")

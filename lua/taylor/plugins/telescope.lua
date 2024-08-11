@@ -39,13 +39,15 @@ return {
           },
         },
         file_ignore_patterns = {
+          -- https://regex101.com/
           ".DS_Store",
           ".undodir",
-          "*.aux",        -- latex stuff
-          "*.synctex.gz", -- latex stuff
-          "*.fls",        -- latex stuff
-          "^%.git/",
-          "^%.git$",
+          "*.aux",              -- latex stuff
+          "*.synctex.gz",       -- latex stuff
+          "*.fls",              -- latex stuff
+          "^%.git/",            -- git
+          "^%.git$",            -- git
+          "^.*node_modules.*$", -- node
         }
       },
       pickers = {
