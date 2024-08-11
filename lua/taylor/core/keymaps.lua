@@ -79,7 +79,7 @@ keymap.set("x", "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
 
 -- toggleterm
 keymap.set("t", "<M-v>", "<C-\\><C-n>")
-keymap.set("t", "<Esc>", "<C-\\><C-n>")
+-- keymap.set("t", "<Esc>", "<C-\\><C-n>")
 keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
 keymap.set({ "n", "t" }, "<M-\\>", "<cmd>ToggleTerm<CR>")
 
