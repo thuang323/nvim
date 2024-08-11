@@ -112,7 +112,8 @@ return {
             -- Treesitter
             ["@field"] = { fg = colors.red },
             ["@constant"] = { fg = colors.orange },
-            ["@operator"] = { fg = colors.fg },
+            -- ["@operator"] = { fg = colors.fg },
+            ["@operator"] = { fg = "#32d7e6" },
             ["@type"] = { link = "Type" },
             ["@boolean"] = { fg = colors.orange },
             ["@type.builtin"] = { fg = colors.purple },
@@ -126,15 +127,18 @@ return {
             ["@variable.member"] = { fg = colors.red },
             ["@variable.builtin"] = { fg = colors.yellow },
             ["@keyword.operator"] = { fg = colors.purple },
+            ["@tag"] = { fg = colors.red },
             ["@tag.attribute"] = { fg = colors.orange },
-            ["@tag.delimiter"] = { fg = colors.purple },
+            ["@tag.delimiter"] = { fg = colors.fg },
+            -- ["@tag.delimiter"] = { fg = colors.purple },
 
             ["@number"] = { fg = colors.orange },
 
             ["@lsp.type.property"] = { fg = colors.cyan },
-            ["@lsp.type.macro"] = { fg = colors.cyan },
+            ["@lsp.type.macro"] = { fg = colors.orange },
             ["@lsp.type.parameter"] = { fg = colors.red },
             ["@lsp.type.bracket"] = { fg = colors.purple },
+            ["@lsp.type.enumMember"] = { fg = colors.cyan },
             -- ["@lsp.type.operator"] = { fg = colors.purple },
             -- ["@lsp.mod.userDefined"] = { fg = colors.blue },
             -- ["@lsp.typemod.operator.userDefined"] = { fg = colors.fg },
@@ -143,7 +147,8 @@ return {
             ["@lsp.typemod.variable.static"] = { fg = colors.orange },
             -- ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.red },
             ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.yellow },
-            ["@lsp.typemod.property.defaultLibrary"] = { fg = colors.red },
+            -- ["@lsp.typemod.property.defaultLibrary"] = { fg = colors.red },
+            ["@lsp.typemod.property.defaultLibrary"] = { fg = colors.cyan },
             ["@lsp.typemod.function.defaultLibrary"] = { fg = colors.cyan },
 
             -- python highlights
@@ -165,9 +170,37 @@ return {
             -- ["@odp.operator.splat.python"] = { fg = theme.palette.fg },
             -- ["@odp.punctuation.special.python"] = { fg = theme.palette.purple },
 
+            -- javascript highlights
+            ["@variable.javascript"] = { fg = colors.red },
+            ["@operator.javascript"] = { fg = colors.fg },
+            ["@variable.member.javascript"] = { fg = colors.cyan },
+            ["@lsp.type.variable.javascript"] = { fg = colors.red },
+            ["@punctuation.special.javascript"] = { fg = colors.orange },
+            ["@tag.builtin.javascript"] = { fg = colors.blue },
+            ["@tag.javascript"] = { fg = colors.red },
+            ["@odp.operator.fat_arrow.javascript"] = { fg = colors.purple },
+            ["@odp.statement.punctuation.bracket.javascript"] = { fg = colors.purple },
+
+            -- typescript highlights
+            ["@variable.typescript"] = { fg = colors.red },
+            ["@lsp.type.variable.typescript"] = { fg = colors.red },
+            ["@punctuation.special.typescript"] = { fg = colors.orange },
+            ["@type.builtin.typescript"] = { fg = colors.yellow },
+            ["@variable.builtin.typescript"] = { fg = colors.yellow },
+            ["@odp.operator.fat_arrow.typescript"] = { fg = colors.purple },
+            -- ["@odp.property.function.typescript"] = { link = "@function.typescript" },
+            ["@lsp.type.typeParameter.typescript"] = { fg = colors.yellow },
+
+            -- json/jsonc highlights
+            ["@property.json"] = { fg = colors.red },
+            ["@odp.braces.json"] = { fg = colors.purple },
+            ["@property.jsonc"] = { fg = colors.red },
+            ["@odp.braces.jsonc"] = { fg = colors.purple },
 
             -- cpp highlights
             ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
+
+
 
 
             -- floating window
