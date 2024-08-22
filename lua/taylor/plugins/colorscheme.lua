@@ -106,7 +106,8 @@ return {
             Todo = { fg = colors.purple, style = "bold" },
             Number = { fg = colors.orange },
             Boolean = { fg = colors.orange },
-            MatchParen = { fg = colors.fg, bg = colors.grey },
+            -- MatchParen = { fg = colors.fg, bg = colors.grey },
+            MatchParen = { fg = colors.purple },
 
 
             -- Treesitter
@@ -183,7 +184,10 @@ return {
 
             -- typescript highlights
             ["@variable.typescript"] = { fg = colors.red },
+            ["@variable.tsx"] = { fg = colors.red },
+            ["@lsp.type.variable.typescriptreact"] = { fg = colors.red },
             ["@lsp.type.variable.typescript"] = { fg = colors.red },
+            ["@tag.builtin.tsx"] = { fg = colors.blue },
             ["@punctuation.special.typescript"] = { fg = colors.orange },
             ["@type.builtin.typescript"] = { fg = colors.yellow },
             ["@variable.builtin.typescript"] = { fg = colors.yellow },
