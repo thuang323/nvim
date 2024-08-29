@@ -42,7 +42,7 @@ opt.updatetime = 250
 opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitright = true
@@ -57,3 +57,31 @@ vim.diagnostic.config({
 if vim.fn.has("nvim-0.10") == 1 then
 	opt.smoothscroll = true
 end
+
+if vim.g.neogui then
+  vim.g.neogui_opts = {
+    window = {
+      vsync = true,
+      high_dpi = true,
+      borderless = true,
+      blur = 20,
+    },
+    margins = {
+      top = 0,
+      bottom = 5,
+      left = 5,
+      right = 5,
+    },
+    multigrid = true,
+    mac_opt_is_meta = true,
+    cursor_idle_time = 10,
+    scroll_speed = 1,
+
+    -- bg_color = 0x282c34,
+    bg_color = 0x16181a,
+    opacity = 0.92,
+    max_fps = 60,
+  }
+end
+
+opt.guifont = "SF Mono,PingFang TC,Symbols Nerd Font:h15:w14"

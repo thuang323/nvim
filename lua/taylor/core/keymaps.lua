@@ -1,6 +1,7 @@
+
 vim.g.mapleader = " "
 
-local keymap = vim.keymap -- for conciseness
+local map = require("taylor.utils.keymap").map
 
 -- some helpful vim keybindings
 -- 1. change a word with multiple occurences once in a file
@@ -9,24 +10,73 @@ local keymap = vim.keymap -- for conciseness
 --    :s/old_word/new_word/g
 
 
+-- editing
+map({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true })
+
+-- differentiate between deleting and cutting
+map({ "n", "x" }, "d", "\"_d")
+map({ "n", "x" }, "D", "\"_D")
+
+map({ "n", "x" }, "c", "\"_c")
+map({ "n", "x" }, "C", "\"_C")
+
+map({ "n", "x" }, "s", "\"_s")
+map({ "n", "x" }, "S", "\"_S")
+
+map("n", "x", "d")
+map("n", "X", "D")
+map("n", "xx", "dd")
+
+-- cmd line emacs
+vim.cmd [[set cedit=\<C-Y>]]
+map("c", "<C-a>", "<Home>")
+map("c", "<C-b>", "<Left>")
+map("c", "<C-d>", "<Del>")
+map("c", "<C-e>", "<End>")
+map("c", "<C-f>", "<Right>")
+map("c", "<C-n>", "<Down>")
+map("c", "<C-p>", "<Up>")
+map("c", "<M-b>", "<S-Left>")
+map("c", "<M-f>", "<S-Right>")
+
+
+-- pasting
+map({ "i", "c" }, "<C-v>", "<C-r>\"")
+map("t", "<C-v>", "<C-\\><C-n>pi")
+
+if vim.g.neogui then
+  map({ "i", "c" }, "<D-v>", "<C-r>+")
+  map("t", "<D-v>", "<C-\\><C-n>\"+pi")
+
+  map({ "i", "c", "t" }, "<D-bs>", "<C-u>")
+end
+
+-- system clipboard
+map({ "n", "x" }, "<leader>p", "\"+p")
+map({ "n", "x" }, "<leader>P", "\"+P")
+
+map({ "n", "x" }, "<leader>y", "\"+y")
+map({ "n", "x" }, "<leader>Y", "\"+Y", { remap = true })
+
+map({ "n", "x" }, "<leader>x", "\"+x")
+map({ "n", "x" }, "<leader>X", "\"+X", { remap = true })
+
 -- general keymaps
-keymap.set("i", "jk", "<Esc>")
-keymap.set("i", "<C-c>", "<Esc>")
+map("i", "jk", "<Esc>")
 
-keymap.set("n", "<leader>nh", "<cmd>nohl<CR>")       -- non highlight
+map("n", "<leader>nh", "<cmd>nohl<CR>")       -- non highlight
 
-keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>")     -- new tab in vim
-keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>")   -- close tab in vim
-keymap.set("n", "<leader>]", "<cmd>tabnext<CR>")     -- go to next tab
-keymap.set("n", "<leader>[", "<cmd>tabprevious<CR>") -- go to prev tab
+map("n", "<leader>tn", "<cmd>tabnew<CR>")     -- new tab in vim
+map("n", "<leader>tc", "<cmd>tabclose<CR>")   -- close tab in vim
+map("n", "<leader>]", "<cmd>tabnext<CR>")     -- go to next tab
+map("n", "<leader>[", "<cmd>tabprevious<CR>") -- go to prev tab
 
-keymap.set("n", "x", '"_x')
 
-keymap.set("n", "<M-a>", "ggVGy<C-o>")                        -- command a and yank
-keymap.set({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true }) -- delete a word
-keymap.set({ "i", "c" }, "<D-bs>", "<C-u>", { remap = true }) -- delete curr line up to cursor
-keymap.set("x", "+", "<C-a>g")                                -- increment line of numbers
-keymap.set("x", "-", "<C-x>g")                                -- decrement line of numbers
+map("n", "<M-a>", "ggVGy<C-o>")                        -- command a and yank
+map({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true }) -- delete a word
+map({ "i", "c" }, "<D-bs>", "<C-u>", { remap = true }) -- delete curr line up to cursor
+map("x", "+", "<C-a>g")                                -- increment line of numbers
+map("x", "-", "<C-x>g")                                -- decrement line of numbers
 
 
 -- Function to scroll by one-fifth of the window height
@@ -39,37 +89,41 @@ local function scroll(direction)
   end
 end
 
-vim.keymap.set({ "n", "x" }, "<C-u>", function() scroll("up") end, { noremap = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<C-d>", function() scroll("down") end, { noremap = true, silent = true })
+map({ "n", "x" }, "<C-u>", function() scroll("up") end, { noremap = true, silent = true })
+map({ "n", "x" }, "<C-d>", function() scroll("down") end, { noremap = true, silent = true })
 
 
+-- indentation
+map("i", "<D-[>", "<C-d>")
+map("i", "<D-]>", "<C-t>")
+map("n", "<D-[>", "<<")
+map("n", "<D-]>", ">>")
+map("x", "<D-[>", "<gv")
+map("x", "<D-]>", ">gv")
 
-keymap.set("x", ">", ">gv") -- adding indent
-keymap.set("x", "<", "<gv") -- delete indent
 
-keymap.set("n", "<C-j>", "<cmd>cnext<CR>")
-keymap.set("n", "<C-k>", "<cmd>cprev<CR>")
+map("n", "<C-j>", "<cmd>cnext<CR>")
+map("n", "<C-k>", "<cmd>cprev<CR>")
 
 
-keymap.set({ "n", "x" }, "<leader>cn", "*Ncgn", { remap = true })
-keymap.set({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
+map({ "n", "x" }, "<leader>cn", "*Ncgn", { remap = true })
+map({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
 
-keymap.set("x", "<leader>p", '"_dP')
 
 -- telescope
-keymap.set("n", "<C-p>", "<cmd>Telescope<cr>")
-keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
-keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
-keymap.set("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
-keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
--- keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<cr>")
-keymap.set("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
-keymap.set("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
-keymap.set("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
+map("n", "<C-p>", "<cmd>Telescope<cr>")
+map("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
+map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
+map("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
+map("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
+-- map("n", "<leader>sh", "<cmd>Telescope help_tags<cr>")
+map("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
+map("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
+map("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
 
 -- comment
-keymap.set("n", "<M-/>", "<Plug>(comment_toggle_linewise_current)")
-keymap.set("x", "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
+map("n", "<D-/>", "<Plug>(comment_toggle_linewise_current)")
+map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- `gco` - Insert comment to the next line and enters INSERT mode
 -- `gcA` - Insert comment to end of the current line and enters INSERT mode
 -- `gcw` - Toggle from the current cursor position to the next word
@@ -78,50 +132,48 @@ keymap.set("x", "<M-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- `gci{` - Toggle inside curly brackets
 
 -- toggleterm
-keymap.set("t", "<M-v>", "<C-\\><C-n>")
--- keymap.set("t", "<Esc>", "<C-\\><C-n>")
-keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
-keymap.set({ "n", "t" }, "<M-\\>", "<cmd>ToggleTerm<CR>")
+map("t", "<M-v>", "<C-\\><C-n>")
+map("t", "<C-w>", "<C-\\><C-n><C-w>")
+  map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 
 -- neo-tree
-keymap.set("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
-keymap.set("n", "<M-b>", "<cmd>Neotree toggle<CR>")
-keymap.set("n", "<leader>ef", "<cmd>Neotree focus<CR>")
-keymap.set("n", "<leader>er", "<cmd>Neotree reveal<CR>")
+map("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
+map("n", "<D-b>", "<cmd>Neotree toggle<CR>")
+map("n", "<leader>ef", "<cmd>Neotree focus<CR>")
+map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 
 -- trouble
 -- Lua
-keymap.set("n", "<leader>tf", "<cmd>Trouble<CR>")
-keymap.set("n", "<leader>to", "<cmd>TroubleToggle<CR>")
-keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
--- keymap.set("n", "<leader>to", function() require("trouble").toggle() end)
--- keymap.set("n", "<leader>tw", function() require("trouble").toggle("workspace_diagnostics") end)
--- keymap.set("n", "<leader>td", function() require("trouble").toggle("document_diagnostics") end)
--- keymap.set("n", "<leader>tq", function() require("trouble").toggle("quickfix") end)
--- keymap.set("n", "<leader>tl", function() require("trouble").toggle("loclist") end)
+map("n", "<leader>tf", "<cmd>Trouble<CR>")
+map("n", "<leader>to", "<cmd>TroubleToggle<CR>")
+map("n", "gR", function() require("trouble").toggle("lsp_references") end)
+-- map("n", "<leader>to", function() require("trouble").toggle() end)
+-- map("n", "<leader>tw", function() require("trouble").toggle("workspace_diagnostics") end)
+-- map("n", "<leader>td", function() require("trouble").toggle("document_diagnostics") end)
+-- map("n", "<leader>tq", function() require("trouble").toggle("quickfix") end)
+-- map("n", "<leader>tl", function() require("trouble").toggle("loclist") end)
 
 -- undo-tree
-keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+map("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- whichkey
-keymap.set("n", "<leader>w", "<cmd>WhichKey<CR>")
+map("n", "<leader>w", "<cmd>WhichKey<CR>")
 
 -- LazyUI
-keymap.set("n", "<leader>L", "<cmd>Lazy<CR>")
+map("n", "<leader>L", "<cmd>Lazy<CR>")
 
 -- Obsidian
--- keymap.set("n", "<leader>o", "<cmd>ObsidianOpen<CR>")
+-- map("n", "<leader>o", "<cmd>ObsidianOpen<CR>")
 
 -- LiveServer
--- keymap.set("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
--- keymap.set("n", "<leader>le", "<cmd>LiveServerStop<CR>")
+-- map("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
+-- map("n", "<leader>le", "<cmd>LiveServerStop<CR>")
 
 -- Colortils
--- keymap.set("n", "<leader>cp", "<cmd>Colortils picker<CR>")
--- keymap.set("n", "<leader>cl", "<cmd>Colortils css list<CR>")
+-- map("n", "<leader>cp", "<cmd>Colortils picker<CR>")
+-- map("n", "<leader>cl", "<cmd>Colortils css list<CR>")
 
 -- hydra mapping
-
 local Hydra = require("hydra")
 
 Hydra({
@@ -135,3 +187,74 @@ Hydra({
     { ">", "<C-w>3>" },
   },
 })
+
+-- neogui
+if vim.g.neogui then
+  -- all modes
+  local mode = {"", "!", "t", "l"};
+  map(mode, "<D-=>", "<cmd>Neogui font_size_change 1<cr>")
+  map(mode, "<D-->", "<cmd>Neogui font_size_change -1<cr>")
+  map(mode, "<D-0>", "<cmd>Neogui font_size_reset<cr>")
+
+  map(mode, "<D-l>", "<cmd>Neogui session_prev<cr>")
+  map(mode, "<D-r>", "<cmd>Neogui session_select sort=time<cr>")
+
+  map(mode, "<D-f>", function()
+    local cmd = [[
+    echo "$({
+      echo ~/;
+      echo ~/resume/;
+      echo ~/.config/nvim/;
+      find ~/Purdue -mindepth 2 -maxdepth 2 -type d;
+      find ~/coding -mindepth 2 -maxdepth 2 -type d;
+      find ~/dotfiles -maxdepth 2 -type d;
+    })"
+    ]]
+    local output = vim.fn.system(cmd)
+
+    local dirs = {}
+    for dir in string.gmatch(output, "([^\n]+)") do
+      table.insert(dirs, dir)
+    end
+
+    vim.ui.select(dirs, {
+      prompt = "Choose a directory:",
+    }, function(choice)
+      if choice == nil then return end
+      local dir = choice
+      local fmod = vim.fn.fnamemodify
+      local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
+      vim.g.neogui_cmd("session_new", { dir = dir, name = name })
+    end)
+  end)
+
+  vim.g.neogui_startup = function()
+    local cmd = [[
+    echo "$({
+      echo ~/;
+      echo ~/resume/;
+      echo ~/.config/nvim/;
+      find ~/Purdue -mindepth 2 -maxdepth 2 -type d;
+      find ~/coding -mindepth 2 -maxdepth 2 -type d;
+      find ~/dotfiles -maxdepth 2 -type d;
+    })"
+    ]]
+    local output = vim.fn.system(cmd)
+
+    local dirs = {}
+    for dir in string.gmatch(output, "([^\n]+)") do
+      table.insert(dirs, dir)
+    end
+
+    vim.ui.select(dirs, {
+      prompt = "Choose a directory:",
+    }, function(choice)
+      if choice == nil then return end
+      local dir = choice
+      local fmod = vim.fn.fnamemodify
+      local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
+      vim.g.neogui_cmd("session_new", { dir = dir, name = name, switch_to = false })
+      vim.g.neogui_cmd("session_kill")
+    end)
+  end
+end
