@@ -38,6 +38,9 @@ return {
         hide_fillchars = false,
         borderless_telescope = false,
         terminal_colors = true,
+        -- Use caching to improve performance - WARNING: experimental feature - expect the unexpected!
+        -- Early testing shows a 60-70% improvement in startup time. YMMV. Disables dynamic light/dark theme switching.
+        cache = false,
         theme = {
           highlights = {
             -- Terminal
@@ -55,7 +58,7 @@ return {
             String = { fg = colors.green },
             Character = { fg = colors.green },
             Identifier = { fg = colors.fg },
-            Function = { fg = colors.blue, style = "italic" },
+            Function = { fg = colors.blue, italic = true },
             Statement = { fg = colors.purple },
             Operator = { fg = colors.fg },
             Keyword = { fg = colors.purple },
@@ -65,7 +68,7 @@ return {
             Special = { fg = colors.red },
             Debug = { fg = colors.orange },
             Delimiter = { fg = delimiterFg },
-            Todo = { fg = colors.purple, style = "bold" },
+            Todo = { fg = colors.purple, bold = true },
             Number = { fg = colors.orange },
             Boolean = { fg = colors.orange },
             -- MatchParen = { fg = colors.fg, bg = colors.grey },
@@ -168,7 +171,6 @@ return {
 
 
 
-
             -- floating window
             NormalFloat = { bg = normalbg, fg = colors.fg },
             FloatBorder = { bg = normalbg, fg = colors.bg },
@@ -180,11 +182,11 @@ return {
             TelescopeMatching = { fg = colors.orange },
             TelescopePreviewBorder = { fg = colors.bg, bg = colors.bg },
             TelescopePreviewNormal = { bg = colors.bg },
-            TelescopePreviewTitle = { fg = colors.bg, bg = "#aae6b2", style = "bold" },
+            TelescopePreviewTitle = { fg = colors.bg, bg = "#aae6b2", bold = true },
             TelescopePromptBorder = { fg = colors.bgAlt, bg = colors.bgAlt },
             TelescopePromptNormal = { fg = colors.fg, bg = colors.bgAlt },
             TelescopePromptPrefix = { fg = colors.grey, bg = colors.bgAlt },
-            TelescopePromptTitle = { fg = colors.bg, bg = promptTitleBg, style = "bold" },
+            TelescopePromptTitle = { fg = colors.bg, bg = promptTitleBg, bold = true },
             TelescopeResultsBorder = { fg = colors.bg, bg = colors.bg },
             TelescopeResultsNormal = { bg = colors.bg },
             TelescopeResultsTitle = { fg = colors.bg, bg = colors.bg },
@@ -203,13 +205,13 @@ return {
 
 
             -- Neotree
-            NeoTreeRootName = { fg = neotreeRootFg, style = "bold" },
+            NeoTreeRootName = { fg = neotreeRootFg, bold = true },
             NeoTreeFileName = { fg = colors.fg },
             NeoTreeGitModified = { fg = colors.yellow },
-            NeoTreeGitConflict = { fg = colors.red, style = "bold,italic" },
-            NeoTreeGitUntracked = { fg = colors.red, style = "italic" },
+            NeoTreeGitConflict = { fg = colors.red, bold = true, italic = true },
+            NeoTreeGitUntracked = { fg = colors.red, italic = true },
             NeoTreeSymbolicLinkTarget = { fg = colors.purple },
-            NeoTreeCursorLine = { style = "bold,italic" },
+            NeoTreeCursorLine = { bold = true, italic = true },
             -- NeoTreeDimText = {},
             -- NeoTreeMessage = {},
             -- NeoTreeFileStats = {},
@@ -225,7 +227,7 @@ return {
             CmpItemAbbr = { fg = colors.fg, bg = colors.bg },
             CmpItemAbbrDeprecated = { fg = colors.grey, bg = colors.bg, strikethrough = true },
             CmpItemAbbrMatch = { fg = colors.orange, bg = colors.bg },
-            CmpItemAbbrMatchFuzzy = { fg = colors.orange, bg = colors.bg, style = "underline" },
+            CmpItemAbbrMatchFuzzy = { fg = colors.orange, bg = colors.bg, underline = true },
             CmpItemKindVariable = { fg = colors.purple, bg = colors.bg },
             CmpItemKindInterface = { fg = colors.green, bg = colors.bg },
             CmpItemKindText = { fg = colors.grey, bg = colors.bg },
@@ -238,7 +240,7 @@ return {
             CmpItemMenu = { fg = colors.grey, bg = colors.bg },
             CmpItemKindDefault = { fg = colors.red, bg = colors.bg },
             markdownCode = { fg = colors.green },
-            DiffText = { fg = colors.yellow, bg = colors.bgHighlight, style = "bold,italic" },
+            DiffText = { fg = colors.yellow, bg = colors.bgHighlight, bold = true, italic = true },
 
 
             -- WhichKey
@@ -275,50 +277,30 @@ return {
             DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
             DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
 
-            DiagnosticUnderlineError = { fg = "NONE", sp = colors.red, style = "undercurl" },
-            DiagnosticUnderlineWarn = { fg = "NONE", sp = colors.yellow, style = "undercurl" },
-            DiagnosticUnderlineInfo = { fg = "NONE", sp = colors.cyan, style = "undercurl" },
-            DiagnosticUnderlineHint = { fg = "NONE", sp = colors.purple, style = "undercurl" },
+            DiagnosticUnderlineError = { fg = "NONE", sp = colors.red, undercurl = true },
+            DiagnosticUnderlineWarn = { fg = "NONE", sp = colors.yellow, undercurl = true },
+            DiagnosticUnderlineInfo = { fg = "NONE", sp = colors.cyan, undercurl = true },
+            DiagnosticUnderlineHint = { fg = "NONE", sp = colors.purple, undercurl = true },
 
             -- Bufferline
             BufferLineSeparator = { fg = colors.grey },
             BufferLineTabSeparator = { fg = colors.grey },
-            BufferLineBufferSelected = { fg = colors.fg, style = "italic" },
-            BufferLineDiagnosticSelected = { fg = colors.fg, style = "italic" },
-            BufferLineHintSelected = { fg = colors.purple, style = "italic" },
-            BufferLineHintDiagnosticSelected = { fg = colors.purple, style = "italic" },
-            BufferLineInfoSelected = { fg = colors.cyan, style = "italic" },
-            BufferLineInfoDiagnosticSelected = { fg = colors.cyan, style = "italic" },
-            BufferLineWarningSelected = { fg = colors.yellow, style = "italic" },
-            BufferLineWarningDiagnosticSelected = { fg = colors.yellow, style = "italic" },
-            BufferLineErrorSelected = { fg = colors.red, style = "italic" },
-            BufferLineErrorDiagnosticSelected = { fg = colors.red, style = "italic" },
-            BufferLineIndicatorSelected = { fg = colors.blue, style = "italic" },
+            BufferLineBufferSelected = { fg = colors.fg, italic = true },
+            BufferLineDiagnosticSelected = { fg = colors.fg, italic = true },
+            BufferLineHintSelected = { fg = colors.purple, italic = true },
+            BufferLineHintDiagnosticSelected = { fg = colors.purple, italic = true },
+            BufferLineInfoSelected = { fg = colors.cyan, italic = true },
+            BufferLineInfoDiagnosticSelected = { fg = colors.cyan, italic = true },
+            BufferLineWarningSelected = { fg = colors.yellow, italic = true },
+            BufferLineWarningDiagnosticSelected = { fg = colors.yellow, italic = true },
+            BufferLineErrorSelected = { fg = colors.red, italic = true },
+            BufferLineErrorDiagnosticSelected = { fg = colors.red, italic = true },
+            BufferLineIndicatorSelected = { fg = colors.blue, italic = true },
 
-            -- trouble
+            -- Trouble
             TroubleCount = { fg = colors.fg, bg = colors.bg },
-            -- TroubleError = {},
             TroubleNormal = { link = "TelescopeNormal" },
-            -- TroubleTextInformation = {},
-            -- TroubleSignWarning = {},
-            -- TroubleLocation = {},
-            -- TroubleWarning = {},
-            -- TroublePreview = {},
-            -- TroubleTextError = {},
-            -- TroubleSignInformation = {},
-            -- TroubleIndent = {},
-            -- TroubleSource = {},
-            -- TroubleSignHint = {},
-            -- TroubleSignOther = {},
-            -- TroubleFoldIcon = {},
-            -- TroubleTextWarning = {},
-            -- TroubleCode = {},
-            -- TroubleInformation = {},
-            -- TroubleSignError = {},
-            -- TroubleFile = {},
-            -- TroubleHint = {},
-            -- TroubleTextHint = {},
-            -- TroubleText = {},
+            TroubleNormalNC = { link = "TelescopeNormal" },
           }
         }
       })
@@ -329,18 +311,13 @@ return {
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- Ensure it loads first
-    config = function ()
+    config = function()
       -- colorschemes
       local utils = require("taylor.utils.colors")
 
       local color = require("onedarkpro.helpers")
       local colors = color.get_colors()
 
-      -- colors.git_add = "#73C991"
-      -- colors.git_add = "#60A27A"
-      -- colors.git_change = "#CE9866"
-      -- colors.git_delete = "#C74E39"
-      -- colors.git_delete = "#e06c75"
 
       require("onedarkpro").setup({
         plugins = {
@@ -351,7 +328,7 @@ return {
           -- diffview = true,
         },
         options = {
-          transparency = true
+          transparency = true,
         },
         highlights = {
           NormalFloat = { bg = colors.float_bg },
@@ -540,5 +517,73 @@ return {
 
       -- vim.cmd("colorscheme onedark")
     end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.opt.background = "dark"
+      require("nvim-web-devicons").refresh()
+      vim.opt.background = "light"
+
+      require("tokyonight").setup({
+        style = "day",
+        transparent = true,
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "dark",  -- style for sidebars, see below
+          floats = "dark",    -- style for floating windows
+        },
+        day_brightness = 0.4, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        dim_inactive = false, -- dims inactive windows
+        lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+        cache = false,
+        on_highlights = function(highlights, colors)
+          highlights.AlphaHeader = { link = "Constant" }
+        end,
+      })
+
+      -- vim.cmd("colorscheme tokyonight")
+    end
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.opt.background = "dark"
+      require("nvim-web-devicons").refresh()
+      vim.opt.background = "light"
+
+      require("rose-pine").setup({
+        variant = "auto",      -- auto, main, moon, or dawn
+        dark_variant = "main", -- main, moon, or dawn
+        dim_inactive_windows = false,
+        extend_background_behind_borders = true,
+
+        enable = {
+          terminal = true,
+          legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+          migrations = true,        -- Handle deprecated options automatically
+        },
+
+        styles = {
+          bold = true,
+          italic = true,
+          transparency = true,
+        },
+        highlight_groups = {
+          AlphaHeader = { link = "@function.builtin" }
+        }
+      })
+
+      -- vim.cmd("colorscheme rose-pine")
+    end
   },
 }

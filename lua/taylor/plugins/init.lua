@@ -3,7 +3,7 @@ return {
   "nvim-lua/plenary.nvim",
   "norcalli/nvim-colorizer.lua",
   "anuvyklack/hydra.nvim",
-  "stevearc/dressing.nvim", -- better UI for telescope
+  -- "stevearc/dressing.nvim", -- better UI for telescope
   "tpope/vim-surround",     -- vim-surround stuff
   -- ys: can use it to surround with the characters you want
   -- ds: can delete the characters surround

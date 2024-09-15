@@ -16,6 +16,7 @@ return {
 			indent = { enable = true }, -- enable indentation
 			autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
 			ensure_installed = { -- ensure these language parsers are installed
+        "python",
 				"json",
 				"javascript",
 				"typescript",
@@ -27,7 +28,6 @@ return {
 				"c",
 				"cpp",
 				"java",
-				"python",
 				"markdown",
 			},
 			-- auto install above language parsers

@@ -65,10 +65,11 @@ return {
     lspconfig["html"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      -- filetypes = { "html", "htmldjango" },
     })
 
     -- configure tyscript server
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -118,7 +119,10 @@ return {
       settings = {
         python = {
           analysis = {
-            typeCheckingMode = "standard",
+            typeCheckingMode = "off",
+            autoImportCompletions = false,
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
             diagnosticMode = "workspace",
           },
         },
