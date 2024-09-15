@@ -1,14 +1,14 @@
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "kdheepak/cmp-latex-symbols", -- latex symbol
-    "hrsh7th/cmp-buffer",         -- source for text in buffer
-    "hrsh7th/cmp-cmdline",        -- source for cmdline completions
-    "hrsh7th/cmp-path",           -- source for file system paths
-    "L3MON4D3/LuaSnip",           -- snippet engine
-    "saadparwaiz1/cmp_luasnip",   -- for autocompletion
+    "kdheepak/cmp-latex-symbols",   -- latex symbol
+    "hrsh7th/cmp-buffer",           -- source for text in buffer
+    "hrsh7th/cmp-cmdline",          -- source for cmdline completions
+    "hrsh7th/cmp-path",             -- source for file system paths
+    "L3MON4D3/LuaSnip",             -- snippet engine
+    "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim",       -- vs-code like pictograms
+    "onsails/lspkind.nvim",         -- vs-code like pictograms
   },
   config = function()
     local cmp = require("cmp")
@@ -21,6 +21,8 @@ return {
     -- 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     -- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     -- end
+
+    -- luasnip.filetype_extend("htmldjango", { "html" })
 
     -- load friendly-snippets
     require("luasnip/loaders/from_vscode").lazy_load()
@@ -105,9 +107,9 @@ return {
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" }, -- lsp
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
-        { name = "path" }, -- file system paths
+        { name = "luasnip" },  -- snippets
+        { name = "buffer" },   -- text within current buffer
+        { name = "path" },     -- file system paths
       }),
 
       sorting = {

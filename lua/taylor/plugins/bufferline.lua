@@ -46,51 +46,6 @@ return {
         enforce_regular_tabs = true,
         always_show_bufferline = false,
       },
-      -- highlights = {
-      --   buffer_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   diagnostic_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   hint_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   hint_diagnostic_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   info_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   info_diagnostic_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   warning_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   warning_diagnostic_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   error_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   error_diagnostic_selected = {
-      --     bold = false,
-      --     italic = true,
-      --   },
-      --   indicator_selected = {
-      --     fg = "#42a7fc",
-      --   },
-      -- },
     })
   end,
 }

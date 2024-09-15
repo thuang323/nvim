@@ -10,9 +10,6 @@ local map = require("taylor.utils.keymap").map
 --    :s/old_word/new_word/g
 
 
--- editing
-map({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true })
-
 -- differentiate between deleting and cutting
 map({ "n", "x" }, "d", "\"_d")
 map({ "n", "x" }, "D", "\"_D")
@@ -26,19 +23,6 @@ map({ "n", "x" }, "S", "\"_S")
 map("n", "x", "d")
 map("n", "X", "D")
 map("n", "xx", "dd")
-
--- cmd line emacs
-vim.cmd [[set cedit=\<C-Y>]]
-map("c", "<C-a>", "<Home>")
-map("c", "<C-b>", "<Left>")
-map("c", "<C-d>", "<Del>")
-map("c", "<C-e>", "<End>")
-map("c", "<C-f>", "<Right>")
-map("c", "<C-n>", "<Down>")
-map("c", "<C-p>", "<Up>")
-map("c", "<M-b>", "<S-Left>")
-map("c", "<M-f>", "<S-Right>")
-
 
 -- pasting
 map({ "i", "c" }, "<C-v>", "<C-r>\"")
@@ -61,6 +45,25 @@ map({ "n", "x" }, "<leader>Y", "\"+Y", { remap = true })
 map({ "n", "x" }, "<leader>x", "\"+x")
 map({ "n", "x" }, "<leader>X", "\"+X", { remap = true })
 
+-- cmd line emacs
+vim.cmd [[set cedit=\<C-Y>]]
+map("c", "<C-a>", "<Home>")
+map("c", "<C-b>", "<Left>")
+map("c", "<C-d>", "<Del>")
+map("c", "<C-e>", "<End>")
+map("c", "<C-f>", "<Right>")
+map("c", "<C-n>", "<Down>")
+map("c", "<C-p>", "<Up>")
+map("c", "<M-b>", "<S-Left>")
+map("c", "<M-f>", "<S-Right>")
+
+-- file switch
+if vim.g.neogui then
+  map("n", "<C-->", "<C-^>")
+else
+  map("n", "<C-_>", "<C-^>")
+end
+
 -- general keymaps
 map("i", "jk", "<Esc>")
 
@@ -72,7 +75,6 @@ map("n", "<leader>]", "<cmd>tabnext<CR>")     -- go to next tab
 map("n", "<leader>[", "<cmd>tabprevious<CR>") -- go to prev tab
 
 
-map("n", "<M-a>", "ggVGy<C-o>")                        -- command a and yank
 map({ "i", "c" }, "<M-bs>", "<C-w>", { remap = true }) -- delete a word
 map({ "i", "c" }, "<D-bs>", "<C-u>", { remap = true }) -- delete curr line up to cursor
 map("x", "+", "<C-a>g")                                -- increment line of numbers
@@ -111,12 +113,11 @@ map({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
 
 
 -- telescope
-map("n", "<C-p>", "<cmd>Telescope<cr>")
+map("n", "<D-p>", "<cmd>Telescope<cr>")
 map("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
 map("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
--- map("n", "<leader>sh", "<cmd>Telescope help_tags<cr>")
 map("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
 map("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
 map("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
@@ -134,7 +135,7 @@ map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- toggleterm
 map("t", "<M-v>", "<C-\\><C-n>")
 map("t", "<C-w>", "<C-\\><C-n><C-w>")
-  map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
+map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 
 -- neo-tree
 map("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
@@ -145,25 +146,19 @@ map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 -- trouble
 -- Lua
 map("n", "<leader>tf", "<cmd>Trouble<CR>")
-map("n", "<leader>to", "<cmd>TroubleToggle<CR>")
-map("n", "gR", function() require("trouble").toggle("lsp_references") end)
--- map("n", "<leader>to", function() require("trouble").toggle() end)
--- map("n", "<leader>tw", function() require("trouble").toggle("workspace_diagnostics") end)
--- map("n", "<leader>td", function() require("trouble").toggle("document_diagnostics") end)
--- map("n", "<leader>tq", function() require("trouble").toggle("quickfix") end)
--- map("n", "<leader>tl", function() require("trouble").toggle("loclist") end)
+-- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
+map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true<CR>")
+map("n", "<leader>ts", "<cmd>Trouble diagnostics split toggle focus=true<CR>")
 
 -- undo-tree
 map("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- whichkey
-map("n", "<leader>w", "<cmd>WhichKey<CR>")
+map("n", "<leader>?", "<cmd>WhichKey<CR>")
 
 -- LazyUI
 map("n", "<leader>L", "<cmd>Lazy<CR>")
 
--- Obsidian
--- map("n", "<leader>o", "<cmd>ObsidianOpen<CR>")
 
 -- LiveServer
 -- map("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
@@ -204,10 +199,11 @@ if vim.g.neogui then
     echo "$({
       echo ~/;
       echo ~/resume/;
+      echo ~/dotfiles/;
       echo ~/.config/nvim/;
-      find ~/Purdue -mindepth 2 -maxdepth 2 -type d;
-      find ~/coding -mindepth 2 -maxdepth 2 -type d;
-      find ~/dotfiles -maxdepth 2 -type d;
+      find ~/Purdue -maxdepth 3 -type d;
+      find ~/coding -maxdepth 2 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
+      find ~/dotfiles -mindepth 1 -maxdepth 3 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
     })"
     ]]
     local output = vim.fn.system(cmd)
@@ -233,10 +229,11 @@ if vim.g.neogui then
     echo "$({
       echo ~/;
       echo ~/resume/;
+      echo ~/dotfiles/;
       echo ~/.config/nvim/;
-      find ~/Purdue -mindepth 2 -maxdepth 2 -type d;
-      find ~/coding -mindepth 2 -maxdepth 2 -type d;
-      find ~/dotfiles -maxdepth 2 -type d;
+      find ~/Purdue -maxdepth 3 -type d;
+      find ~/coding -maxdepth 2 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
+      find ~/dotfiles -mindepth 1 -maxdepth 3 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
     })"
     ]]
     local output = vim.fn.system(cmd)

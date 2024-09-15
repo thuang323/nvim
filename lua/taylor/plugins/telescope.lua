@@ -4,6 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-ui-select.nvim" },
   },
   config = function()
     local telescope = require("telescope")
@@ -28,7 +29,9 @@ return {
         dynamic_preview_title = true,
         prompt_prefix = "   ",
         sorting_strategy = "ascending",
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        border = true,
+        borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
         mappings = {
           i = {
             ["<C-p>"] = actions.move_selection_previous,                      -- move to previous result
@@ -61,8 +64,18 @@ return {
           jump_type = "vsplit",
         },
       },
+      extensions = {
+        ["ui-select"] = {
+          -- layout_strategy = "flex",
+          layout_config = {
+            width = 100,
+            height = 30,
+          },
+        },
+      }
     })
 
     telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
   end,
 }

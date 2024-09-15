@@ -2,6 +2,8 @@ local opt = vim.opt -- for conciseness
 
 vim.g.mapleader = " " -- set local mapleader before loading lazy
 
+opt.fillchars = {eob = " "}
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true
@@ -35,7 +37,6 @@ opt.sidescrolloff = 10
 opt.mousescroll = "ver:1,hor:3"
 
 opt.undofile = true
-opt.undodir = ".undodir"
 opt.updatetime = 250
 
 -- backspace
@@ -54,8 +55,17 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
-if vim.fn.has("nvim-0.10") == 1 then
-	opt.smoothscroll = true
+local get_bg_color = function (color_scheme)
+  if color_scheme == "cyberdream" then
+    return 0x16181a
+  elseif color_scheme == "rose-pine" then
+    return 0xfaf4ed
+  elseif color_scheme == "tokyonight" then
+    return 0xe1e2e7
+  else
+    -- onedark pro
+    return 0x282c34
+  end
 end
 
 if vim.g.neogui then
@@ -77,11 +87,14 @@ if vim.g.neogui then
     cursor_idle_time = 10,
     scroll_speed = 1,
 
-    -- bg_color = 0x282c34,
-    bg_color = 0x16181a,
-    opacity = 0.92,
+    -- bg_color = get_bg_color(vim.g.colors_name),
+    bg_color = 0x16181a, -- cyberdream
+    -- bg_color = 0xfaf4ed, -- rose-pine
+    -- bg_color = 0xe1e2e7, -- tokyonight day
+    -- bg_color = 0x282c34, -- onedark
+    opacity = 0.93,
     max_fps = 60,
   }
 end
 
-opt.guifont = "SF Mono,PingFang TC,Symbols Nerd Font:h15:w14"
+opt.guifont = "SFMono Nerd Font,PingFang TC,Hack Nerd Font Mono,Symbols Nerd Font:h15:w14"
