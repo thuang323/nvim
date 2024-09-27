@@ -1,5 +1,6 @@
 return {
 	"aurum77/live-server.nvim",
+  lazy = false,
 	build = function()
 		require("live_server.util").install()
 	end,

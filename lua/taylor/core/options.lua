@@ -1,6 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 vim.g.mapleader = " " -- set local mapleader before loading lazy
+vim.g.maplocalleader = " " -- set local mapleader before loading lazy
 
 opt.fillchars = {eob = " "}
 
@@ -31,6 +32,7 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.pumheight = 12
 
 opt.scrolloff = 8
 opt.sidescrolloff = 10
