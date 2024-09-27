@@ -121,18 +121,18 @@ return {
             ["@variable.python"] = { fg = colors.red },
             ["@constructor.python"] = { fg = colors.yellow },
             ["@type.builtin.python"] = { fg = colors.yellow },
-            ["@function.builtin.python"] = { fg = colors.blue },
+            -- ["@function.builtin.python"] = { fg = colors.blue },
 
             ["@odp.base_constructor.python"] = { fg = colors.cyan },
             ["@odp.import_module.python"] = { fg = colors.fg },
             ["@odp.constructor.python"] = { link = "@constructor.python" },
-            -- ["@odp.function.builtin.python"] = { fg = colors.blue },
+            ["@odp.keyword.class.python"] = { link = "@keyword.function.python" },
+            ["@odp.function.builtin.python"] = { fg = colors.cyan },
             -- ["@odp.decorator.python"] = { link = "@function" },
             -- ["@odp.decorator.function.python"] = { link = "@function" },
             -- ["@odp.import_from.python"] = { fg = theme.palette.purple, style = config.styles.keywords },
             -- ["@odp.interpolation.python"] = { fg = theme.palette.red, style = config.styles.parameters },
             -- ["@odp.keyword.python"] = { style = config.styles.keywords },
-            -- ["@odp.keyword.class.python"] = { link = "@keyword.function.python" },
             -- ["@odp.operator.splat.python"] = { fg = theme.palette.fg },
             -- ["@odp.punctuation.special.python"] = { fg = theme.palette.purple },
 
@@ -277,10 +277,10 @@ return {
             DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
             DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
 
-            DiagnosticUnderlineError = { fg = "NONE", sp = colors.red, undercurl = true },
-            DiagnosticUnderlineWarn = { fg = "NONE", sp = colors.yellow, undercurl = true },
-            DiagnosticUnderlineInfo = { fg = "NONE", sp = colors.cyan, undercurl = true },
-            DiagnosticUnderlineHint = { fg = "NONE", sp = colors.purple, undercurl = true },
+            DiagnosticUnderlineError = { sp = colors.red, undercurl = true },
+            DiagnosticUnderlineWarn = { sp = colors.yellow, undercurl = true },
+            DiagnosticUnderlineInfo = { sp = colors.cyan, underdashed = true },
+            DiagnosticUnderlineHint = { sp = colors.purple, underdotted = true },
 
             -- Bufferline
             BufferLineSeparator = { fg = colors.grey },
@@ -529,7 +529,8 @@ return {
 
       require("tokyonight").setup({
         style = "day",
-        transparent = true,
+        transparent = false,
+        -- transparent = true,
         styles = {
           -- Style to be applied to different syntax groups
           -- Value is any valid attr-list value for `:help nvim_set_hl`

@@ -17,9 +17,9 @@ return {
     -- <localleader> lv -> to view
     -- <localleader> lk -> to stop
     "lervag/vimtex",
+    lazy = false,
     ft = "tex",
     config = function()
-      vim.g.maplocalleader = " "
       vim.g.vimtex_view_method = "sioyek"
       vim.g.vimtex_quickfix_open_on_warning = 0
       vim.g.vimtex_format_enabled = 1
@@ -27,6 +27,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    lazy = false,
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
