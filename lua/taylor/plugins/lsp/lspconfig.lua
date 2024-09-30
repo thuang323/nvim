@@ -129,6 +129,13 @@ return {
       },
     })
 
+
+    -- configure LaTeX server
+    lspconfig["docker_compose_language_service"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     -- configure LaTeX server
     lspconfig["texlab"].setup({
       capabilities = capabilities,
