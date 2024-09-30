@@ -90,8 +90,8 @@ if vim.g.neogui then
     scroll_speed = 1,
 
     -- bg_color = get_bg_color(vim.g.colors_name),
-    bg_color = 0x16181a, -- cyberdream
-    -- bg_color = 0xfaf4ed, -- rose-pine
+    -- bg_color = 0x16181a, -- cyberdream
+    bg_color = 0xfaf4ed, -- rose-pine
     -- bg_color = 0xe1e2e7, -- tokyonight day
     -- bg_color = 0x282c34, -- onedark
     opacity = 0.93,

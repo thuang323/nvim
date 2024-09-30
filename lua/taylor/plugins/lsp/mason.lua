@@ -25,6 +25,7 @@ return {
 				"pyright",
 				"lua_ls",
 				"texlab",
+        "docker_compose_language_service",
 			},
 			mason_null.setup({
 				ensure_installed = {
