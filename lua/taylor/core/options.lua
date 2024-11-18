@@ -53,6 +53,9 @@ opt.splitbelow = true
 
 opt.iskeyword:append("-")
 
+opt.guicursor = "n-v-c-ci-sm:block,i-ve:ver25,r-cr-o:hor20,a:blinkwait100-blinkoff700-blinkon700"
+vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
+
 vim.diagnostic.config({
 	virtual_text = false,
 })
@@ -70,8 +73,8 @@ local get_bg_color = function (color_scheme)
   end
 end
 
-if vim.g.neogui then
-  vim.g.neogui_opts = {
+if vim.g.neogurt then
+  vim.g.neogurt_opts = {
     window = {
       vsync = true,
       high_dpi = true,
@@ -90,8 +93,8 @@ if vim.g.neogui then
     scroll_speed = 1,
 
     -- bg_color = get_bg_color(vim.g.colors_name),
-    -- bg_color = 0x16181a, -- cyberdream
-    bg_color = 0xfaf4ed, -- rose-pine
+    bg_color = 0x16181a, -- cyberdream
+    -- bg_color = 0xfaf4ed, -- rose-pine
     -- bg_color = 0xe1e2e7, -- tokyonight day
     -- bg_color = 0x282c34, -- onedark
     opacity = 0.93,

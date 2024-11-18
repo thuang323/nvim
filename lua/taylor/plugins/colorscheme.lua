@@ -38,8 +38,6 @@ return {
         hide_fillchars = false,
         borderless_telescope = false,
         terminal_colors = true,
-        -- Use caching to improve performance - WARNING: experimental feature - expect the unexpected!
-        -- Early testing shows a 60-70% improvement in startup time. YMMV. Disables dynamic light/dark theme switching.
         cache = false,
         theme = {
           highlights = {
@@ -303,6 +301,26 @@ return {
             TroubleCount = { fg = colors.fg, bg = colors.bg },
             TroubleNormal = { link = "TelescopeNormal" },
             TroubleNormalNC = { link = "TelescopeNormal" },
+
+
+            -- todo-comments
+            TodoBgTODO = { bg = colors.cyan, fg = colors.bg, bold = true },
+            TodoBgWARN = { bg = colors.yellow, fg = colors.bg, bold = true },
+            TodoBgNOTE = { bg = colors.green, fg = colors.bg, bold = true },
+            TodoBgPERF = { bg = colors.purple, fg = colors.bg, bold = true },
+            TodoBgFIX = { bg = colors.red, fg = colors.white, bold = true },
+            TodoBgHACK = { bg = colors.yellow, fg = colors.bg, bold = true },
+            -- TodoBgTEST = {},
+            TodoFgTODO = { fg = colors.cyan },
+            TodoFgWARN = { fg = colors.yellow },
+            TodoFgNOTE = { fg = colors.green },
+            TodoFgPERF = { fg = colors.purple },
+            TodoFgFIX =  { fg = colors.red },
+            TodoFgHACK = { fg = colors.yellow },
+            -- TodoFgTEST = {},
+            TodoSignNOTE = { fg = colors.green },
+            TodoSignPERF = { fg = colors.purple },
+            -- TodoSignTEST = {},
           }
         }
       })

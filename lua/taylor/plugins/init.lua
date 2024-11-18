@@ -10,6 +10,7 @@ return {
   -- cs: change the characteres surrounw
   "vim-scripts/ReplaceWithRegister",                                     -- grw: can paste the word you have copied
   { "lewis6991/gitsigns.nvim", config = true },
+  { "mechatroner/rainbow_csv" },
   { "kdheepak/lazygit.nvim",   dependencies = "nvim-lua/plenary.nvim" }, -- lazygit
   {
     -- vimtex:
