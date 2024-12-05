@@ -14,7 +14,8 @@ return {
 				disable = {
           "latex",
           "csv",
-          "dockerfile"
+          "dockerfile",
+          "ini",
         },
 			},
 			indent = { enable = true }, -- enable indentation
