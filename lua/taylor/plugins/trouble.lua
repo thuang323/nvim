@@ -94,8 +94,14 @@ return {
         symbols = {
           desc = "document symbols",
           mode = "lsp_document_symbols",
-          focus = false,
-          win = { position = "right" },
+          focus = true,
+          -- preview = {
+          --   type = "float",
+          -- },
+          win = {
+            position = "right",
+            size = 0.18,
+          },
           filter = {
             -- remove Package since luals uses it for control flow structures
             ["not"] = { ft = "lua", kind = "Package" },

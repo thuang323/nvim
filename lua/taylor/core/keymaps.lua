@@ -9,6 +9,7 @@ local map = require("taylor.utils.keymap").map
 -- 2. change a word with multiple occurences once in the visual line mode
 --    :s/old_word/new_word/g
 
+vim.api.nvim_create_user_command("Q", "wa | qa", {})
 
 -- differentiate between deleting and cutting
 map({ "n", "x" }, "d", "\"_d")
@@ -24,16 +25,11 @@ map("n", "x", "d")
 map("n", "X", "D")
 map("n", "xx", "dd")
 
+
 -- pasting
 map({ "i", "c" }, "<C-v>", "<C-r>\"")
 map("t", "<C-v>", "<C-\\><C-n>pi")
 
-if vim.g.neogui then
-  map({ "i", "c" }, "<D-v>", "<C-r>+")
-  map("t", "<D-v>", "<C-\\><C-n>\"+pi")
-
-  map({ "i", "c", "t" }, "<D-bs>", "<C-u>")
-end
 
 -- system clipboard
 map({ "n", "x" }, "<leader>p", "\"+p")
@@ -44,6 +40,7 @@ map({ "n", "x" }, "<leader>Y", "\"+Y", { remap = true })
 
 map({ "n", "x" }, "<leader>x", "\"+x")
 map({ "n", "x" }, "<leader>X", "\"+X", { remap = true })
+
 
 -- cmd line emacs
 vim.cmd [[set cedit=\<C-Y>]]
@@ -57,12 +54,6 @@ map("c", "<C-p>", "<Up>")
 map("c", "<M-b>", "<S-Left>")
 map("c", "<M-f>", "<S-Right>")
 
--- file switch
-if vim.g.neogui then
-  map("n", "<C-->", "<C-^>")
-else
-  map("n", "<C-_>", "<C-^>")
-end
 
 -- general keymaps
 map("i", "jk", "<Esc>")
@@ -104,10 +95,12 @@ map("x", "<D-[>", "<gv")
 map("x", "<D-]>", ">gv")
 
 
+-- quickfix jump
 map("n", "<C-j>", "<cmd>cnext<CR>")
 map("n", "<C-k>", "<cmd>cprev<CR>")
 
 
+-- word change
 map({ "n", "x" }, "<leader>cn", "*Ncgn", { remap = true })
 map({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
 
@@ -121,6 +114,8 @@ map("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
 map("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
 map("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
+map("n", "<leader>st", "<cmd>TodoTelescope<cr>")
+
 
 -- comment
 map("n", "<D-/>", "<Plug>(comment_toggle_linewise_current)")
@@ -132,10 +127,12 @@ map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- `gca{` - Toggle around curly brackets
 -- `gci{` - Toggle inside curly brackets
 
+
 -- toggleterm
 map("t", "<M-v>", "<C-\\><C-n>")
 map("t", "<C-w>", "<C-\\><C-n><C-w>")
 map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
+
 
 -- neo-tree
 map("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
@@ -143,18 +140,21 @@ map("n", "<D-b>", "<cmd>Neotree toggle<CR>")
 map("n", "<leader>ef", "<cmd>Neotree focus<CR>")
 map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 
+
 -- trouble
--- Lua
 map("n", "<leader>tf", "<cmd>Trouble<CR>")
 -- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
-map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true<CR>")
-map("n", "<leader>ts", "<cmd>Trouble diagnostics split toggle focus=true<CR>")
+map("n", "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.buf=0<CR>")
+map("n", "<leader>ts", "<cmd>Trouble symbols<CR>")
+
 
 -- undo-tree
 map("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+
 -- whichkey
 map("n", "<leader>?", "<cmd>WhichKey<CR>")
+
 
 -- LazyUI
 map("n", "<leader>L", "<cmd>Lazy<CR>")
@@ -164,9 +164,11 @@ map("n", "<leader>L", "<cmd>Lazy<CR>")
 -- map("n", "<leader>ls", "<cmd>LiveServerStart<CR>")
 -- map("n", "<leader>le", "<cmd>LiveServerStop<CR>")
 
+
 -- Colortils
 -- map("n", "<leader>cp", "<cmd>Colortils picker<CR>")
 -- map("n", "<leader>cl", "<cmd>Colortils css list<CR>")
+
 
 -- hydra mapping
 local Hydra = require("hydra")
@@ -183,16 +185,31 @@ Hydra({
   },
 })
 
--- neogui
-if vim.g.neogui then
+
+-- file switch
+if vim.g.neogurt then
+  map("n", "<C-->", "<C-^>")
+else
+  map("n", "<C-_>", "<C-^>")
+end
+
+
+if vim.g.neogurt then
+  map({ "i", "c" }, "<D-v>", "<C-r>+")
+  map("t", "<D-v>", "<C-\\><C-n>\"+pi")
+  map({ "i", "c", "t" }, "<D-bs>", "<C-u>")
+end
+
+-- neogurt
+if vim.g.neogurt then
   -- all modes
   local mode = {"", "!", "t", "l"};
-  map(mode, "<D-=>", "<cmd>Neogui font_size_change 1<cr>")
-  map(mode, "<D-->", "<cmd>Neogui font_size_change -1<cr>")
-  map(mode, "<D-0>", "<cmd>Neogui font_size_reset<cr>")
+  map(mode, "<D-=>", "<cmd>Neogurt font_size_change 1<cr>")
+  map(mode, "<D-->", "<cmd>Neogurt font_size_change -1<cr>")
+  map(mode, "<D-0>", "<cmd>Neogurt font_size_reset<cr>")
 
-  map(mode, "<D-l>", "<cmd>Neogui session_prev<cr>")
-  map(mode, "<D-r>", "<cmd>Neogui session_select sort=time<cr>")
+  map(mode, "<D-l>", "<cmd>Neogurt session_prev<cr>")
+  map(mode, "<D-r>", "<cmd>Neogurt session_select sort=time<cr>")
 
   map(mode, "<D-f>", function()
     local cmd = [[
@@ -220,11 +237,11 @@ if vim.g.neogui then
       local dir = choice
       local fmod = vim.fn.fnamemodify
       local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
-      vim.g.neogui_cmd("session_new", { dir = dir, name = name })
+      vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
     end)
   end)
 
-  vim.g.neogui_startup = function()
+  vim.g.neogurt_startup = function()
     local cmd = [[
     echo "$({
       echo ~/;
@@ -250,8 +267,8 @@ if vim.g.neogui then
       local dir = choice
       local fmod = vim.fn.fnamemodify
       local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
-      vim.g.neogui_cmd("session_new", { dir = dir, name = name, switch_to = false })
-      vim.g.neogui_cmd("session_kill")
+      vim.g.neogurt_cmd("session_new", { dir = dir, name = name, switch_to = false })
+      vim.g.neogurt_cmd("session_kill")
     end)
   end
 end

@@ -11,20 +11,23 @@ return {
 			-- enable syntax highlighting
 			highlight = {
 				enable = true,
-				disable = { "latex" },
+				disable = {
+          "latex",
+          "csv",
+          "dockerfile"
+        },
 			},
 			indent = { enable = true }, -- enable indentation
 			autotag = { enable = true }, -- enable autotagging (w/ nvim-ts-autotag plugin)
 			ensure_installed = { -- ensure these language parsers are installed
         "python",
-				"json",
+        -- "json",
 				"javascript",
 				"typescript",
 				"tsx",
 				"html",
 				"css",
 				"lua",
-				"latex",
 				"c",
 				"cpp",
 				"java",
