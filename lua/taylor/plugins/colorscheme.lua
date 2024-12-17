@@ -31,7 +31,13 @@ return {
       local delimiterFg = "#bbc0c9"
       -- local normalbg = "#111112"
       -- local promptTitleBg = "#FF7E70"
+      local comment = "#abb0b8"
 
+      local diffAddBg = "#7da186"
+      local diffAddBg2 = "#40574b"
+      local diffDeleteBg = "#b56e6e"
+      local diffChangeBg = "#cfb742"
+      local utils = require("taylor.utils.colors")
       require("cyberdream").setup({
         transparent = true,
         italic_comments = true,
@@ -52,6 +58,7 @@ return {
 
 
             -- Syntax
+            Comment = { fg = comment },
             Constant = { fg = colors.orange },
             String = { fg = colors.green },
             Character = { fg = colors.green },
@@ -240,7 +247,7 @@ return {
             CmpItemMenu = { fg = colors.grey, bg = colors.bg },
             CmpItemKindDefault = { fg = colors.red, bg = colors.bg },
             markdownCode = { fg = colors.green },
-            DiffText = { fg = colors.yellow, bg = colors.bgHighlight, bold = true, italic = true },
+            -- DiffText = { fg = colors.yellow, bg = colors.bgHighlight, bold = true, italic = true },
 
 
             -- WhichKey
@@ -321,6 +328,13 @@ return {
             TodoSignNOTE = { fg = colors.green },
             TodoSignPERF = { fg = colors.purple },
             -- TodoSignTEST = {},
+
+
+            -- diffview
+            DiffAdd = { bg = utils.darken(diffAddBg, 0.7, diffAddBg2) },
+            DiffDelete = { bg = utils.darken(diffDeleteBg, 0.6, colors.bg) },
+            DiffText = { bg = utils.darken(diffAddBg, 0.7, diffAddBg2) },
+            DiffChange = { bg = utils.darken(diffChangeBg, 0.5, colors.bg) },
           }
         }
       })

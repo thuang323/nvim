@@ -148,6 +148,11 @@ map("n", "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.
 map("n", "<leader>ts", "<cmd>Trouble symbols<CR>")
 
 
+-- diffview
+map("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
+map("n", "<leader>gh", "<Cmd>DiffviewFileHistory<CR>")
+map("n", "<leader>gH", "<Cmd>DiffviewFileHistory %<CR>")
+
 -- undo-tree
 map("n", "<leader>u", vim.cmd.UndotreeToggle)
 

@@ -13,6 +13,7 @@
   "colortils.nvim": { "branch": "main", "commit": "9ec6db0a1dc381acb04be715f17f636909d2dcce" },
   "copilot.lua": { "branch": "master", "commit": "1a237cf50372830a61d92b0adf00d3b23882e0e1" },
   "cyberdream.nvim": { "branch": "main", "commit": "57fc3af9a8adcf1655fa4e70164bddd2ed898f60" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
   "gitsigns.nvim": { "branch": "main", "commit": "1ef74b546732f185d0f806860fa5404df7614f28" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
