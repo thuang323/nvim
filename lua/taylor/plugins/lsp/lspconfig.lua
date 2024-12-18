@@ -62,20 +62,20 @@ return {
     end
 
     -- configure html server
-    lspconfig["html"].setup({
+    lspconfig.html.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       -- filetypes = { "html", "htmldjango" },
     })
 
     -- configure tyscript server
-    lspconfig["ts_ls"].setup({
+    lspconfig.ts_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure css server
-    lspconfig["cssls"].setup({
+    lspconfig.cssls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -88,32 +88,32 @@ return {
     })
 
     -- configure tailwindcss server
-    lspconfig["tailwindcss"].setup({
+    lspconfig.tailwindcss.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure emmet_ls server
-    lspconfig["emmet_ls"].setup({
+    lspconfig.emmet_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     })
 
     -- configure C/C++ server
-    lspconfig["clangd"].setup({
+    lspconfig.clangd.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure Java server
-    lspconfig["jdtls"].setup({
+    lspconfig.jdtls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure python server
-    lspconfig["pyright"].setup({
+    lspconfig.pyright.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = {
@@ -130,20 +130,20 @@ return {
     })
 
 
-    -- configure LaTeX server
-    lspconfig["docker_compose_language_service"].setup({
+    -- configure docker_compose server
+    lspconfig.docker_compose_language_service.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure LaTeX server
-    lspconfig["texlab"].setup({
+    lspconfig.texlab.setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
+    lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua

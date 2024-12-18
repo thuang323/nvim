@@ -8,6 +8,7 @@ return {
     "L3MON4D3/LuaSnip",             -- snippet engine
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
+    "tailwind-tools",               -- tailwind
     "onsails/lspkind.nvim",         -- vs-code like pictograms
   },
   config = function()
@@ -130,6 +131,7 @@ return {
             nvim_lua = "[Lua]",
             latex_symbols = "[Latex]",
           },
+          before = require("tailwind-tools.cmp").lspkind_format,
         }),
       },
     })
