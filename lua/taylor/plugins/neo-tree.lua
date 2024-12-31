@@ -39,7 +39,6 @@ return {
             ".DS_Store",
           },
           never_show_by_pattern = { -- uses glob style patterns
-            ".undodir*",
             "*.aux",                -- latex stuff
             "*.synctex.gz",         -- latex stuff
             "*.fls",                -- latex stuff

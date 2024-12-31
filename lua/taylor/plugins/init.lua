@@ -4,11 +4,11 @@ return {
   "norcalli/nvim-colorizer.lua",
   "anuvyklack/hydra.nvim",
   -- "stevearc/dressing.nvim", -- better UI for telescope
-  "tpope/vim-surround",     -- vim-surround stuff
+  "tpope/vim-surround", -- vim-surround stuff
   -- ys: can use it to surround with the characters you want
   -- ds: can delete the characters surround
   -- cs: change the characteres surrounw
-  "vim-scripts/ReplaceWithRegister",                                     -- grw: can paste the word you have copied
+  "vim-scripts/ReplaceWithRegister", -- grw: can paste the word you have copied
   { "lewis6991/gitsigns.nvim", config = true },
   { "mechatroner/rainbow_csv" },
   { "kdheepak/lazygit.nvim",   dependencies = "nvim-lua/plenary.nvim" }, -- lazygit
