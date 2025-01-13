@@ -83,8 +83,8 @@ return {
             -- Treesitter
             ["@field"] = { fg = colors.red },
             ["@constant"] = { fg = colors.orange },
-            -- ["@operator"] = { fg = colors.fg },
-            ["@operator"] = { fg = "#32d7e6" },
+            ["@operator"] = { fg = colors.fg },
+            -- ["@operator"] = { fg = "#32d7e6" },
             ["@type"] = { link = "Type" },
             ["@boolean"] = { fg = colors.orange },
             ["@type.builtin"] = { fg = colors.purple },
