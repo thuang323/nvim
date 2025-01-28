@@ -336,10 +336,15 @@ return {
             DiffText = { bg = utils.darken(diffAddBg, 0.7, diffAddBg2) },
             DiffChange = { bg = utils.darken(diffChangeBg, 0.5, colors.bg) },
           }
-        }
+        },
+
+        extensions = {
+          markview = false,
+        },
       })
 
       vim.cmd("colorscheme cyberdream")
+      vim.opt.background = "dark"
     end,
   },
   {
@@ -586,6 +591,7 @@ return {
       })
 
       -- vim.cmd("colorscheme tokyonight")
+      vim.opt.background = "dark"
     end
   },
   {
@@ -619,6 +625,7 @@ return {
       })
 
       -- vim.cmd("colorscheme rose-pine")
+      vim.opt.background = "dark"
     end
   },
 }
