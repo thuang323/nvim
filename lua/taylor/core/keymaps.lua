@@ -141,6 +141,9 @@ map("n", "<leader>ef", "<cmd>Neotree focus<CR>")
 map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 
 
+-- oil
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- trouble
 map("n", "<leader>tf", "<cmd>Trouble<CR>")
 -- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
