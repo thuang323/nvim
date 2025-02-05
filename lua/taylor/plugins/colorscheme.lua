@@ -322,7 +322,7 @@ return {
             TodoFgWARN = { fg = colors.yellow },
             TodoFgNOTE = { fg = colors.green },
             TodoFgPERF = { fg = colors.purple },
-            TodoFgFIX =  { fg = colors.red },
+            TodoFgFIX = { fg = colors.red },
             TodoFgHACK = { fg = colors.yellow },
             -- TodoFgTEST = {},
             TodoSignNOTE = { fg = colors.green },
@@ -583,7 +583,7 @@ return {
         },
         day_brightness = 0.4, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         dim_inactive = false, -- dims inactive windows
-        lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+        lualine_bold = true,  -- When `true`, section headers in the lualine theme will be bold
         cache = false,
         on_highlights = function(highlights, colors)
           highlights.AlphaHeader = { link = "Constant" }
