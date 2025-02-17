@@ -202,33 +202,114 @@ else
 end
 
 
+-- neogurt
 if vim.g.neogurt then
   map({ "i", "c" }, "<D-v>", "<C-r>+")
   map("t", "<D-v>", "<C-\\><C-n>\"+pi")
   map({ "i", "c", "t" }, "<D-bs>", "<C-u>")
 end
 
--- neogurt
 if vim.g.neogurt then
   -- all modes
   local mode = {"", "!", "t", "l"};
+
+  map(mode, "<D-t>", "<cmd>tabnew<cr>")
+  map(mode, "<D-w>", "<cmd>tabclose<cr>")
+  map(mode, "<D-}>", "<cmd>tabnext<cr>")
+  map(mode, "<D-{>", "<cmd>tabprev<cr>")
+
   map(mode, "<D-=>", "<cmd>Neogurt font_size_change 1<cr>")
   map(mode, "<D-->", "<cmd>Neogurt font_size_change -1<cr>")
   map(mode, "<D-0>", "<cmd>Neogurt font_size_reset<cr>")
 
   map(mode, "<D-l>", "<cmd>Neogurt session_prev<cr>")
-  map(mode, "<D-r>", "<cmd>Neogurt session_select sort=time<cr>")
+  map(mode, "<D-R>", "<cmd>Neogurt session_restart<cr>")
 
-  map(mode, "<D-f>", function()
+  local choose_session = function(startup)
+    local curr_id = vim.g.neogurt_cmd("session_info").id
+    local session_list = vim.g.neogurt_cmd("session_list", { sort = "time" })
+
     local cmd = [[
+    EXCLUDE_DIRS=('*/.git' '*/.undodir' '*/node_modules' '*/.next')
+
+    EXCLUDE_ARGS=()
+    for dir in "${EXCLUDE_DIRS[@]}"; do
+      EXCLUDE_ARGS+=(-path "$dir" -o)
+    done
+
     echo "$({
       echo ~/;
+      echo ~/Downloads/;
+      echo ~/Desktop/;
       echo ~/resume/;
+      echo ~/test/;
       echo ~/dotfiles/;
       echo ~/.config/nvim/;
       find ~/Purdue -maxdepth 3 -type d;
-      find ~/coding -maxdepth 2 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
-      find ~/dotfiles -mindepth 1 -maxdepth 3 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
+      find ~/coding -maxdepth 2 -type d \( "${EXCLUDE_ARGS[@]:0:${#EXCLUDE_ARGS[@]}-1}" \) -prune -o -type d -print;
+      find ~/Notes/cs_notes -maxdepth 1 -type d;
+    })"
+    ]]
+    local output = vim.fn.system(cmd)
+
+    for dir in string.gmatch(output, "([^\n]+)") do
+      table.insert(session_list, { dir = dir })
+    end
+
+    vim.ui.select(session_list, {
+      prompt = "Sessions",
+      format_item = function(session)
+        if session.id ~= nil then
+          if session.id == curr_id then
+            return "* " .. session.name
+          else
+            return "- " .. session.name
+          end
+        else
+          return session.dir
+        end
+      end
+    }, function(choice)
+      if choice == nil then return end
+
+      if choice.id ~= nil then
+        vim.g.neogurt_cmd("session_switch", { id = choice.id })
+      else
+        local fmod = vim.fn.fnamemodify
+        local dir = fmod(choice.dir, ":p")
+        local name = fmod(dir, ":h:h:t") .. "/" .. fmod(dir, ":h:t")
+
+        if startup then
+          local currId = vim.g.neogurt_cmd("session_info").id
+          vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
+          vim.g.neogurt_cmd("session_kill", { id = currId })
+        else
+          vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
+        end
+      end
+    end)
+  end
+
+  local new_session = function(startup)
+    local cmd = [[
+    EXCLUDE_DIRS=('*/.git' '*/.undodir' '*/node_modules' '*/.next')
+
+    EXCLUDE_ARGS=()
+    for dir in "${EXCLUDE_DIRS[@]}"; do
+      EXCLUDE_ARGS+=(-path "$dir" -o)
+    done
+
+    echo "$({
+      echo ~/;
+      echo ~/Downloads/;
+      echo ~/Desktop/;
+      echo ~/resume/;
+      echo ~/test/;
+      echo ~/dotfiles/;
+      echo ~/.config/nvim/;
+      find ~/Purdue -maxdepth 3 -type d;
+      find ~/coding -maxdepth 2 -type d \( "${EXCLUDE_ARGS[@]:0:${#EXCLUDE_ARGS[@]}-1}" \) -prune -o -type d -print;
+      find ~/Notes/cs_notes -maxdepth 1 -type d;
     })"
     ]]
     local output = vim.fn.system(cmd)
@@ -239,44 +320,33 @@ if vim.g.neogurt then
     end
 
     vim.ui.select(dirs, {
-      prompt = "Choose a directory:",
+      prompt = "New Session",
     }, function(choice)
       if choice == nil then return end
-      local dir = choice
-      local fmod = vim.fn.fnamemodify
-      local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
-      vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
+
+        local fmod = vim.fn.fnamemodify
+        local dir = fmod(choice, ":p")
+        local name = fmod(dir, ":h:h:t") .. "/" .. fmod(dir, ":h:t")
+
+      if startup then
+        local currId = vim.g.neogurt_cmd("session_info").id
+        vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
+        vim.g.neogurt_cmd("session_kill", { id = currId })
+      else
+        vim.g.neogurt_cmd("session_new", { dir = dir, name = name })
+      end
     end)
+  end
+
+  map(mode, "<D-r>", function()
+    choose_session(false)
+  end)
+
+  map(mode, "<D-f>", function()
+    new_session(false)
   end)
 
   vim.g.neogurt_startup = function()
-    local cmd = [[
-    echo "$({
-      echo ~/;
-      echo ~/resume/;
-      echo ~/dotfiles/;
-      echo ~/.config/nvim/;
-      find ~/Purdue -maxdepth 3 -type d;
-      find ~/coding -maxdepth 2 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
-      find ~/dotfiles -mindepth 1 -maxdepth 3 -type d \( -path '*/.git' -o -path '*/.undodir' \) -prune -o -type d -print;
-    })"
-    ]]
-    local output = vim.fn.system(cmd)
-
-    local dirs = {}
-    for dir in string.gmatch(output, "([^\n]+)") do
-      table.insert(dirs, dir)
-    end
-
-    vim.ui.select(dirs, {
-      prompt = "Choose a directory:",
-    }, function(choice)
-      if choice == nil then return end
-      local dir = choice
-      local fmod = vim.fn.fnamemodify
-      local name = fmod(fmod(dir, ":h"), ":t") .. "/" .. fmod(dir, ":t")
-      vim.g.neogurt_cmd("session_new", { dir = dir, name = name, switch_to = false })
-      vim.g.neogurt_cmd("session_kill")
-    end)
+    new_session(true)
   end
 end
