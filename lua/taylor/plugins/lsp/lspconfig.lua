@@ -110,6 +110,15 @@ return {
     lspconfig.jdtls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        java = {
+          project = {
+            referencedLibraries = {
+              "/homes/cs408/Spring2025/junit_launch.jar", -- ssh
+            },
+          }
+        }
+      }
     })
 
     -- configure python server
