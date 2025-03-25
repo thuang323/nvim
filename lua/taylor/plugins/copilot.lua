@@ -28,7 +28,7 @@ return {
           prev = "<M-p>",
           accept_word = false,
           accept_line = false,
-          dismiss = "<C-c>",
+          dismiss = "<M-c>",
           -- accept = "<M-l>",
           -- next = "<M-]>",
           -- prev = "<M-[>",
