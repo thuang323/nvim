@@ -173,11 +173,6 @@ map("n", "<leader>L", "<cmd>Lazy<CR>")
 -- map("n", "<leader>le", "<cmd>LiveServerStop<CR>")
 
 
--- Colortils
--- map("n", "<leader>cp", "<cmd>Colortils picker<CR>")
--- map("n", "<leader>cl", "<cmd>Colortils css list<CR>")
-
-
 -- hydra mapping
 local Hydra = require("hydra")
 

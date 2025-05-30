@@ -39,13 +39,15 @@ return {
       local diffChangeBg = "#cfb742"
       local utils = require("taylor.utils.colors")
       require("cyberdream").setup({
+        variant = "auto",
         transparent = true,
         italic_comments = true,
         hide_fillchars = false,
-        borderless_telescope = false,
+        borderless_pickers = true,
+        -- borderless_telescope = false,
         terminal_colors = true,
         cache = false,
-        theme = {
+        -- theme = {
           highlights = {
             -- Terminal
             Directory = { fg = colors.blue },
@@ -54,7 +56,7 @@ return {
             CurSearch = { link = "IncSearch" },
             -- CursorLine = { bg = "#29292b" },
             CursorLine = { bg = "#252527" },
-            TabLineFill = { link = "Search" },
+            -- TabLineFill = { link = "Search" },
 
 
             -- Syntax
@@ -335,8 +337,8 @@ return {
             DiffDelete = { bg = utils.darken(diffDeleteBg, 0.6, colors.bg) },
             DiffText = { bg = utils.darken(diffAddBg, 0.7, diffAddBg2) },
             DiffChange = { bg = utils.darken(diffChangeBg, 0.5, colors.bg) },
-          }
-        },
+          },
+        -- },
 
         extensions = {
           markview = false,

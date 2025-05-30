@@ -201,27 +201,27 @@ return {
     }
 
 
-    local harpoon = {
-      sections = {
-        lualine_a = { { "mode", icon = "" } },
-        lualine_b = { { "branch", icon = "" } },
-        lualine_c = {
-          function()
-            return "Harpoon Menu"
-          end,
-        },
-        lualine_y = {
-          { "progress" },
-          { "location", color = { fg = colors.cyan, bg = colors.none } },
-        },
-        lualine_z = {
-          function()
-            return "  " .. os.date("%X") .. " 🚀 "
-          end,
-        },
-      },
-      filetypes = { "harpoon" },
-    }
+    -- local harpoon = {
+    --   sections = {
+    --     lualine_a = { { "mode", icon = "" } },
+    --     lualine_b = { { "branch", icon = "" } },
+    --     lualine_c = {
+    --       function()
+    --         return "Harpoon Menu"
+    --       end,
+    --     },
+    --     lualine_y = {
+    --       { "progress" },
+    --       { "location", color = { fg = colors.cyan, bg = colors.none } },
+    --     },
+    --     lualine_z = {
+    --       function()
+    --         return "  " .. os.date("%X") .. " 🚀 "
+    --       end,
+    --     },
+    --   },
+    --   filetypes = { "harpoon" },
+    -- }
 
 
     local mason = {
@@ -308,7 +308,7 @@ return {
               return icon .. (status.message or "")
             end,
             cond = function()
-              local ok, clients = pcall(vim.lsp.get_active_clients, { name = "copilot", bufnr = 0 })
+              local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
               return ok and #clients > 0
             end,
             color = function()
@@ -337,7 +337,7 @@ return {
         telescope,
         toggleterm,
         trouble,
-        harpoon,
+        -- harpoon,
         mason,
       },
     })
