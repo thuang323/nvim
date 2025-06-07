@@ -1,1 +1,1 @@
-require("taylor.init")
+require("taylor.lazy")

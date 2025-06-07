@@ -106,26 +106,20 @@ map({ "n", "x" }, "<leader>cN", "*NcgN", { remap = true })
 
 
 -- telescope
-map("n", "<D-p>", "<cmd>Telescope<cr>")
-map("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
-map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
-map("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
-map("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
-map("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
-map("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
-map("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
-map("n", "<leader>st", "<cmd>TodoTelescope<cr>")
+-- map("n", "<D-p>", "<cmd>Telescope<cr>")
+-- map("n", "<leader>sf", "<cmd>Telescope find_files<cr>")
+-- map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>")
+-- map("n", "<leader>sw", "<cmd>Telescope grep_string<cr>")
+-- map("n", "<leader>sb", "<cmd>Telescope buffers<cr>")
+-- map("n", "<leader>sc", "<cmd>Telescope colorscheme<cr>")
+-- map("n", "<leader>so", "<cmd>Telescope oldfiles<cr>")
+-- map("n", "<leader>sh", "<cmd>Telescope highlights<cr>")
+-- map("n", "<leader>st", "<cmd>TodoTelescope<cr>")
 
 
 -- comment
 map("n", "<D-/>", "<Plug>(comment_toggle_linewise_current)")
 map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
--- `gco` - Insert comment to the next line and enters INSERT mode
--- `gcA` - Insert comment to end of the current line and enters INSERT mode
--- `gcw` - Toggle from the current cursor position to the next word
--- `gc}` - Toggle until the next blank line
--- `gca{` - Toggle around curly brackets
--- `gci{` - Toggle inside curly brackets
 
 
 -- toggleterm
@@ -135,34 +129,26 @@ map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 
 
 -- neo-tree
-map("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
-map("n", "<D-b>", "<cmd>Neotree toggle<CR>")
-map("n", "<leader>ef", "<cmd>Neotree focus<CR>")
-map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
+-- map("n", "<leader>eo", "<cmd>Neotree toggle<CR>")
+-- map("n", "<D-b>", "<cmd>Neotree toggle<CR>")
+-- map("n", "<leader>ef", "<cmd>Neotree focus<CR>")
+-- map("n", "<leader>er", "<cmd>Neotree reveal<CR>")
 
 
 -- oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- trouble
-map("n", "<leader>tf", "<cmd>Trouble<CR>")
--- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
-map("n", "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.buf=0<CR>")
-map("n", "<leader>ts", "<cmd>Trouble symbols<CR>")
+-- map("n", "<leader>tf", "<cmd>Trouble<CR>")
+-- -- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
+-- map("n", "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.buf=0<CR>")
+-- map("n", "<leader>ts", "<cmd>Trouble symbols<CR>")
 
 
 -- diffview
-map("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
-map("n", "<leader>gh", "<Cmd>DiffviewFileHistory<CR>")
-map("n", "<leader>gH", "<Cmd>DiffviewFileHistory %<CR>")
-
--- undo-tree
-map("n", "<leader>u", vim.cmd.UndotreeToggle)
-
-
--- whichkey
-map("n", "<leader>?", "<cmd>WhichKey<CR>")
-
+-- map("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
+-- map("n", "<leader>gh", "<Cmd>DiffviewFileHistory<CR>")
+-- map("n", "<leader>gH", "<Cmd>DiffviewFileHistory %<CR>")
 
 -- LazyUI
 map("n", "<leader>L", "<cmd>Lazy<CR>")
@@ -174,19 +160,19 @@ map("n", "<leader>L", "<cmd>Lazy<CR>")
 
 
 -- hydra mapping
-local Hydra = require("hydra")
-
-Hydra({
-  name = "windowsResize",
-  mode = "n",
-  body = "<C-w>",
-  heads = {
-    { "+", "<C-w>+" },
-    { "-", "<C-w>-" },
-    { "<", "<C-w>3<" },
-    { ">", "<C-w>3>" },
-  },
-})
+-- local Hydra = require("hydra")
+-- 
+-- Hydra({
+--   name = "windowsResize",
+--   mode = "n",
+--   body = "<C-w>",
+--   heads = {
+--     { "+", "<C-w>+" },
+--     { "-", "<C-w>-" },
+--     { "<", "<C-w>3<" },
+--     { ">", "<C-w>3>" },
+--   },
+-- })
 
 
 -- file switch

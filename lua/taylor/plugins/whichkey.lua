@@ -1,11 +1,17 @@
 return {
-	"folke/which-key.nvim",
-	config = function()
-		local which_key = require("which-key")
-
-		which_key.setup({
-      preset = "modern", -- false | classic | modern | helix
-			triggers = {},
-		})
-	end,
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+        preset = "modern", -- false | classic | modern | helix
+        triggers = {},
+    },
+    keys = {
+        {
+            "<leader>?",
+            function()
+                require("which-key").show({ global = false })
+            end,
+            desc = "Buffer Local Keymaps (which-key)",
+        },
+    },
 }

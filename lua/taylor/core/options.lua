@@ -2,21 +2,28 @@ local opt = vim.opt -- for conciseness
 
 vim.g.mapleader = " " -- set local mapleader before loading lazy
 vim.g.maplocalleader = " " -- set local mapleader before loading lazy
+vim.g.snacks_animate = false
 
-opt.fillchars = {eob = " "}
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
 
 -- line numbers
 opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.shiftround = true
 opt.autoindent = true
-opt.smartindent = true
 
 -- line wrapping
 opt.wrap = false
@@ -51,6 +58,9 @@ opt.backspace = "indent,eol,start"
 opt.splitright = true
 opt.splitbelow = true
 
+opt.completeopt = "menu,menuone,noinsert,noselect"
+opt.pumheight = 10
+
 opt.iskeyword:append("-")
 
 opt.guicursor = "n-v-c-ci-sm:block,i-ve:ver25,r-cr-o:hor20,a:blinkwait100-blinkoff700-blinkon700"
@@ -60,18 +70,6 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
-local get_bg_color = function (color_scheme)
-  if color_scheme == "cyberdream" then
-    return 0x16181a
-  elseif color_scheme == "rose-pine" then
-    return 0xfaf4ed
-  elseif color_scheme == "tokyonight" then
-    return 0xe1e2e7
-  else
-    -- onedark pro
-    return 0x282c34
-  end
-end
 
 if vim.g.neogurt then
   vim.g.neogurt_opts = {
