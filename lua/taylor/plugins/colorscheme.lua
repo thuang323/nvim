@@ -29,6 +29,7 @@ return {
       local promptTitleBg = "#FF9185"
       local neotreeRootFg = "#dd9046"
       local delimiterFg = "#bbc0c9"
+      -- local delimiterBg = "#252527"
       -- local normalbg = "#111112"
       -- local promptTitleBg = "#FF7E70"
       local comment = "#abb0b8"
@@ -74,6 +75,7 @@ return {
             Type = { fg = colors.yellow },
             Special = { fg = colors.red },
             Debug = { fg = colors.orange },
+            -- Delimiter = { fg = delimiterFg, bg = delimiterBg },
             Delimiter = { fg = delimiterFg },
             Todo = { fg = colors.purple, bold = true },
             Number = { fg = colors.orange },
@@ -110,7 +112,7 @@ return {
             ["@lsp.type.property"] = { fg = colors.cyan },
             ["@lsp.type.macro"] = { fg = colors.orange },
             ["@lsp.type.parameter"] = { fg = colors.red },
-            ["@lsp.type.bracket"] = { fg = colors.purple },
+            -- ["@lsp.type.bracket"] = { fg = colors.purple },
             ["@lsp.type.enumMember"] = { fg = colors.cyan },
             -- ["@lsp.type.operator"] = { fg = colors.purple },
             -- ["@lsp.mod.userDefined"] = { fg = colors.blue },
@@ -154,7 +156,7 @@ return {
             ["@tag.javascript"] = { fg = colors.red },
             ["@lsp.typemod.variable.readonly.javascriptreact"] = { fg = colors.orange },
             ["@odp.operator.fat_arrow.javascript"] = { fg = colors.purple },
-            ["@odp.statement.punctuation.bracket.javascript"] = { fg = colors.purple },
+            -- ["@odp.statement.punctuation.bracket.javascript"] = { fg = colors.purple },
 
             -- typescript highlights
             ["@variable.typescript"] = { fg = colors.red },

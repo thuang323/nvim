@@ -3,14 +3,22 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "Hoffs/omnisharp-extended-lsp.nvim",
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    -- "williamboman/mason.nvim",
+    -- "williamboman/mason-lspconfig.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
+
+
+    -- -- used to enable autocompletion (assign to every lsp server config)
+    local capabilities = cmp_nvim_lsp.default_capabilities()
+
+    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers.
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
     -- enable keybinds only for when lsp server available
     local on_attach = function(client, bufnr)
@@ -66,8 +74,6 @@ return {
       end, opts) -- mapping to format
     end
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
