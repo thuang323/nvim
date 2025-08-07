@@ -15,8 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup({
-	{ import = "taylor.plugins" },
-	-- { import = "taylor.plugins.lsp" },
+  { import = "taylor.plugins" },
+  -- { import = "taylor.plugins.lsp" },
 })
 
 require("taylor.core.keymaps")

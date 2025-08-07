@@ -56,10 +56,6 @@ map("c", "<M-f>", "<S-Right>")
 
 
 -- general keymaps
-map("i", "jk", "<Esc>")
-
-map("n", "<leader>nh", "<cmd>nohl<CR>")       -- non highlight
-
 map("n", "<leader>tn", "<cmd>tabnew<CR>")     -- new tab in vim
 map("n", "<leader>tc", "<cmd>tabclose<CR>")   -- close tab in vim
 map("n", "<leader>]", "<cmd>tabnext<CR>")     -- go to next tab
@@ -125,7 +121,7 @@ map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- toggleterm
 map("t", "<M-v>", "<C-\\><C-n>")
 map("t", "<C-w>", "<C-\\><C-n><C-w>")
-map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
+-- map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 
 
 -- neo-tree
@@ -138,11 +134,6 @@ map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 -- oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
--- trouble
--- map("n", "<leader>tf", "<cmd>Trouble<CR>")
--- -- map("n", "<leader>td", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>")
--- map("n", "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.buf=0<CR>")
--- map("n", "<leader>ts", "<cmd>Trouble symbols<CR>")
 
 
 -- diffview
@@ -160,19 +151,19 @@ map("n", "<leader>L", "<cmd>Lazy<CR>")
 
 
 -- hydra mapping
--- local Hydra = require("hydra")
--- 
--- Hydra({
---   name = "windowsResize",
---   mode = "n",
---   body = "<C-w>",
---   heads = {
---     { "+", "<C-w>+" },
---     { "-", "<C-w>-" },
---     { "<", "<C-w>3<" },
---     { ">", "<C-w>3>" },
---   },
--- })
+local Hydra = require("hydra")
+
+Hydra({
+  name = "windowsResize",
+  mode = "n",
+  body = "<C-w>",
+  heads = {
+    { "+", "<C-w>+" },
+    { "-", "<C-w>-" },
+    { "<", "<C-w>3<" },
+    { ">", "<C-w>3>" },
+  },
+})
 
 
 -- file switch
