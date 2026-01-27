@@ -1,2 +1,2 @@
-vim.opt.textwidth = 120
+vim.opt.textwidth = 80
 vim.g.maplocalleader = " "

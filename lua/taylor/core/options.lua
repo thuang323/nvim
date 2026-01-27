@@ -2,7 +2,7 @@ local opt = vim.opt -- for conciseness
 
 vim.g.mapleader = " " -- set local mapleader before loading lazy
 vim.g.maplocalleader = " " -- set local mapleader before loading lazy
-vim.g.snacks_animate = false
+vim.g.snacks_animate = true
 
 opt.fillchars = {
   foldopen = "",
@@ -65,11 +65,6 @@ opt.iskeyword:append("-")
 
 opt.guicursor = "n-v-c-ci-sm:block,i-ve:ver25,r-cr-o:hor20,a:blinkwait100-blinkoff700-blinkon700"
 vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
-
-vim.diagnostic.config({
-	virtual_text = false,
-})
-
 
 if vim.g.neogurt then
   vim.g.neogurt_opts = {

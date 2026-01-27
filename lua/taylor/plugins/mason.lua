@@ -17,19 +17,13 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "ts_ls",
-        "vue_ls",
-        "emmet_ls",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "clangd",
-        "omnisharp",
-        -- "jdtls",
-        "pyright",
         "lua_ls",
+        "clangd",
+        "pyright",
+        "emmet_ls",
+        "ts_ls",
+        "tailwindcss",
         "texlab",
-        "docker_compose_language_service",
       },
       -- mason_null.setup({
       -- 	ensure_installed = {

@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+  priority = 1000,
   dependencies = { "echasnovski/mini.icons" },
   config = function()
     local colors = {
@@ -65,54 +66,7 @@ return {
       return vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
     end
 
-
     -- customize extensions
-    local neo_tree = {
-      sections = {
-        lualine_a = { { "mode", icon = "" } },
-        lualine_b = { get_short_cwd },
-        lualine_c = {
-          function()
-            return "Neo-Tree 󰙅"
-          end,
-        },
-        lualine_y = {
-          { "progress" },
-          { "location", color = { fg = colors.cyan, bg = colors.none }, },
-        },
-        lualine_z = {
-          function()
-            return "  " .. os.date("%X") .. " 🚀 "
-          end,
-        },
-      },
-      filetypes = { "neo-tree" },
-    }
-
-
-    local telescope = {
-      sections = {
-        lualine_a = { { "mode", icon = "" } },
-        lualine_b = { { "branch", icon = " " } },
-        lualine_c = {
-          function()
-            return "Telescope 🔭 "
-          end,
-        },
-        lualine_y = {
-          { "progress" },
-          { "location", color = { fg = colors.cyan, bg = colors.none } },
-        },
-        lualine_z = {
-          function()
-            return "  " .. os.date("%X") .. " 🚀 "
-          end,
-        },
-      },
-      filetypes = { "TelescopePrompt" },
-    }
-
-
     local toggleterm = {
       sections = {
         lualine_a = { { "mode", icon = "" } },
@@ -170,7 +124,29 @@ return {
         end,
         disabled_filetypes = {
           statusline = { "alpha" },
-          winbar = {},
+          winbar = {
+            "alpha",
+            "neo-tree",
+            "tagbar",
+            "undotree",
+            "diff",
+            "qf",
+            "DiffviewFiles",
+            "DiffviewFileHistory",
+            "NeogitStatus",
+            "dap-repl",
+            "dapui_breakpoints",
+            "dapui_console",
+            "dapui_scopes",
+            "dapui_stacks",
+            "dapui_watches",
+            "dap-view",
+            "dap-view-term",
+            "snacks_dashboard",
+            "snacks_picker_list",
+            "trouble",
+            "checkhealth"
+          },
         },
         ignore_focus = {},
         globalstatus = true,
@@ -228,8 +204,6 @@ return {
         },
       },
       extensions = {
-        -- neo_tree,
-        -- telescope,
         toggleterm,
       },
     })

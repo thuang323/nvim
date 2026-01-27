@@ -8,7 +8,6 @@ return {
     dashboard = {
       preset = {
         keys = {
-          -- { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "e", desc = "File Explorer", action = ":lua Snacks.explorer()" },
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('recent', { filter = {cwd = true} })" },
@@ -123,7 +122,7 @@ return {
     { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
     { "grr",             function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
     { "gri",             function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
-    { "gt",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
+    { "grt",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
     { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
     { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
     -- Other
