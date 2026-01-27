@@ -240,7 +240,6 @@ return {
           ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
 
 
-
           Pmenu = { bg = normalbg, fg = colors.fg },
           -- floating window
           NormalFloat = { bg = normalbg, fg = colors.fg },
