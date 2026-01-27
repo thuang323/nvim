@@ -10,8 +10,7 @@ return {
   -- },
   {
     "OXY2DEV/markview.nvim",
-    lazy = false,     -- Recommended
-
+    lazy = false,
     dependencies = {
       -- You will not need this if you installed the
       -- parsers manually
@@ -26,10 +25,10 @@ return {
 
       markview.setup({
         preview = {
-          modes = { "n", "no", "c" },           -- Change these modes
+          modes = { "n", "no", "c" },
           -- to what you need
 
-          hybrid_modes = { "n" },           -- Uses this feature on
+          hybrid_modes = { "n" },
           -- normal mode
 
           -- This is nice to have
