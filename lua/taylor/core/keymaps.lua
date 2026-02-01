@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 
 local map = require("taylor.utils.keymap").map
@@ -109,37 +108,14 @@ map("x", "<D-/>", "<Plug>(comment_toggle_linewise_visual)")
 -- toggleterm
 map("t", "<M-v>", "<C-\\><C-n>")
 map("t", "<C-w>", "<C-\\><C-n><C-w>")
--- map({ "n", "t" }, "<D-j>", "<cmd>ToggleTerm<CR>")
 
 
 -- oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 
-
--- diffview
--- map("n", "<leader>gd", "<Cmd>DiffviewOpen<CR>")
--- map("n", "<leader>gh", "<Cmd>DiffviewFileHistory<CR>")
--- map("n", "<leader>gH", "<Cmd>DiffviewFileHistory %<CR>")
-
 -- LazyUI
 map("n", "<leader>L", "<cmd>Lazy<CR>")
-
-
--- hydra mapping
-local Hydra = require("hydra")
-
-Hydra({
-  name = "windowsResize",
-  mode = "n",
-  body = "<C-w>",
-  heads = {
-    { "+", "<C-w>+" },
-    { "-", "<C-w>-" },
-    { "<", "<C-w>3<" },
-    { ">", "<C-w>3>" },
-  },
-})
 
 
 -- file switch

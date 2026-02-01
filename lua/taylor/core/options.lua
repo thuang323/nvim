@@ -1,8 +1,8 @@
-local opt = vim.opt -- for conciseness
+local opt = vim.opt
 
 vim.g.mapleader = " " -- set local mapleader before loading lazy
 vim.g.maplocalleader = " " -- set local mapleader before loading lazy
-vim.g.snacks_animate = true
+vim.g.snacks_animate = false
 
 opt.fillchars = {
   foldopen = "",
@@ -82,11 +82,9 @@ if vim.g.neogurt then
     cursor_idle_time = 10,
     scroll_speed = 1,
 
-    -- bg_color = get_bg_color(vim.g.colors_name),
     bg_color = 0x16181a, -- cyberdream
     -- bg_color = 0xfaf4ed, -- rose-pine
     -- bg_color = 0xe1e2e7, -- tokyonight day
-    -- bg_color = 0x282c34, -- onedark
     opacity = 0.93,
     max_fps = 60,
   }

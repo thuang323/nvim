@@ -9,19 +9,15 @@ return {
         ["?"] = "help",
         r = "refresh",
         R = "toggle_refresh",
-        ["<c-c>"] = "close",
+        q = "close",
         o = "jump_close",
         ["<esc>"] = "cancel",
         l = "jump",
         ["<2-leftmouse>"] = "jump",
         ["<c-s>"] = "jump_split",
         ["<c-v>"] = "jump_vsplit",
-        -- go down to next item (accepts count)
-        -- j = "next",
         ["}"] = "next",
         ["]]"] = "next",
-        -- go up to prev item (accepts count)
-        -- k = "prev",
         ["{"] = "prev",
         ["[["] = "prev",
         dd = "delete",
@@ -74,60 +70,32 @@ return {
             size = 0.5,
           },
         },
-        -- sources define their own modes, which you can use directly,
-        -- or override like in the example below
-        lsp_references = {
-          -- some modes are configurable, see the source code for more details
-          params = {
-            include_declaration = true,
-          },
-        },
-        -- The LSP base mode for:
-        -- * lsp_definitions, lsp_references, lsp_implementations
-        -- * lsp_type_definitions, lsp_declarations, lsp_command
-        lsp_base = {
-          params = {
-            -- don't include the current location in the results
-            include_current = false,
-          },
-        },
-        -- more advanced example that extends the lsp_document_symbols
         symbols = {
           desc = "document symbols",
           mode = "lsp_document_symbols",
           focus = true,
-          -- preview = {
-          --   type = "float",
-          -- },
           win = {
             position = "right",
             size = 0.18,
           },
-          filter = {
-            -- remove Package since luals uses it for control flow structures
-            ["not"] = { ft = "lua", kind = "Package" },
-            any = {
-              -- all symbol kinds for help / markdown files
-              ft = { "help", "markdown" },
-              -- default set of symbol kinds
-              kind = {
-                "Class",
-                "Constructor",
-                "Enum",
-                "Field",
-                "Function",
-                "Interface",
-                "Method",
-                "Module",
-                "Namespace",
-                "Package",
-                "Property",
-                "Struct",
-                "Trait",
-              },
-            },
-          },
         },
+        todos = {
+          mode = "todo",
+          filter = {
+            tag = {
+              "TODO",
+              "FIX",
+              "BUG"
+            }
+          },
+          focus = true,
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.5,
+          },
+        }
       },
 
     })
@@ -135,6 +103,7 @@ return {
   keys = {
     { "<leader>tf", "<cmd>Trouble<cr>",                                                  desc = "Trouble Menu" },
     { "<leader>td", "<cmd>Trouble diagnostics split toggle focus=true filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+    { "<leader>tt", "<cmd>Trouble todos<CR>",                                            desc = "Todo Tasks (Trouble)" },
     { "<leader>ts", "<cmd>Trouble symbols<cr>",                                          desc = "Symbols (Trouble)" },
   },
 }

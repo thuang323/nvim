@@ -10,12 +10,12 @@ return {
     close_on_exit = true,     -- close the terminal window when the process exits
     highlights = {
       NormalFloat = {
-        -- link = "NormalFloat",
-        link = "TelescopeNormal",
+        link = "NormalFloat",
+        -- link = "TelescopeNormal",
       },
       FloatBorder = {
-        -- link = "NormalFloat",
-        link = "TelescopeNormal",
+        link = "NormalFloat",
+        -- link = "TelescopeNormal",
       },
     },
     float_opts = {

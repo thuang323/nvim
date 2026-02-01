@@ -39,7 +39,21 @@ return {
             ["<a-e>i"] = { "toggle_ignored", mode = { "i", "n" } },
           },
         },
-      }
+      },
+      sources = {
+        explorer = {
+          layout = {
+            layout = {
+              width = function ()
+                local width = vim.o.columns * 0.2
+                width = math.max(width, 30)
+                width = math.min(width, 40)
+                return width
+              end,
+            },
+          },
+        },
+      },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -49,15 +63,19 @@ return {
     styles = {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
-      }
-    }
+      },
+      float = {
+        backdrop = false,
+      },
+      zen = {
+        backdrop = { transparent = true, blend = 0 }, -- to set transparent to false, the colorscheme has to be non-transparent
+      },
+    },
   },
   keys = {
     -- Top Pickers & Explorer
     { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
     { "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
-    { "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
-    { "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
     { "<leader>n",       function() Snacks.picker.notifications() end,                           desc = "Notification History" },
     { "<leader>ee",      function() Snacks.explorer() end,                                       desc = "File Explorer Toggle" },
     {
@@ -74,7 +92,6 @@ return {
       end,
       desc = "File Explorer Reveal",
     },
-    { "<leader>;",       function() Snacks.dashboard.open() end,                                 desc = "Dashboard" },
     -- find
     { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
     { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -116,13 +133,15 @@ return {
     { "<leader>sq",      function() Snacks.picker.qflist() end,                                  desc = "Quickfix List" },
     { "<leader>sR",      function() Snacks.picker.resume() end,                                  desc = "Resume" },
     { "<leader>su",      function() Snacks.picker.undo() end,                                    desc = "Undo History" },
+    { "<leader>st",      function() Snacks.picker.todo_comments() end,                           desc = "Todo" },
+    { "<leader>sT",      function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "BUG" } }) end,  desc = "Todo/Fix/BUG" },
     { "<leader>uC",      function() Snacks.picker.colorschemes() end,                            desc = "Colorschemes" },
     -- LSP
     { "gd",              function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
     { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
     { "grr",             function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
     { "gri",             function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
-    { "grt",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
+    { "grt",             function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
     { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
     { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
     -- Other
@@ -136,8 +155,6 @@ return {
     { "<leader>gB",      function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
     { "<leader>gg",      function() Snacks.lazygit() end,                                        desc = "Lazygit" },
     { "<leader>un",      function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
-    { "<c-/>",           function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
-    { "<c-_>",           function() Snacks.terminal() end,                                       desc = "which_key_ignore" },
     { "]]",              function() Snacks.words.jump(vim.v.count1) end,                         desc = "Next Reference",           mode = { "n", "t" } },
     { "[[",              function() Snacks.words.jump(-vim.v.count1) end,                        desc = "Prev Reference",           mode = { "n", "t" } },
     {
@@ -181,7 +198,6 @@ return {
         Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
         "<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
-        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
         Snacks.toggle.indent():map("<leader>ug")
         Snacks.toggle.dim():map("<leader>uD")

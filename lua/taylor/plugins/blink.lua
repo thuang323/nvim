@@ -91,17 +91,30 @@ return {
     snippets = { preset = 'default' },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'latex' },
       providers = {
 				latex = {
 					name = "Latex",
 					module = "blink-cmp-latex",
 					opts = {
-						-- set to true to insert the latex command instead of the symbol
-						insert_command = false
+            insert_command = function(ctx)
+              local ft = vim.api.nvim_get_option_value("filetype", {
+                scope = "local",
+                buf = ctx.bufnr,
+              })
+              if ft == "tex" then
+                return true
+              end
+              return false
+            end
 					},
 				},
 			},
+      default = function()
+        if vim.bo.filetype == "tex" then
+          return { "lsp", "path", "snippets", "latex", "buffer" }
+        end
+        return { "lsp", "path", "snippets", "buffer" }
+      end,
     },
 
     signature = { enabled = true },

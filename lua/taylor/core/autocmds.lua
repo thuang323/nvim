@@ -41,23 +41,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- go to last loc for harpoon
--- local harpoon = require("harpoon")
--- vim.api.nvim_create_autocmd({ "BufLeave", "ExitPre" }, {
--- 	pattern = "*",
--- 	callback = function()
--- 		local filename = vim.fn.expand("%:p:.")
--- 		local harpoon_marks = harpoon:list().items
--- 		for _, mark in ipairs(harpoon_marks) do
--- 			if mark.value == filename then
--- 				mark.context.row = vim.fn.line(".")
--- 				mark.context.col = vim.fn.col(".")
--- 				return
--- 			end
--- 		end
--- 	end,
--- })
-
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -67,17 +50,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		})
 	end,
 })
-
--- LuaSnip supertab fix
--- vim.api.nvim_create_autocmd("ModeChanged", {
---   group = vim.api.nvim_create_augroup("taylor_clear_supertab", {}),
---   pattern = "*",
---   callback = function()
---     if ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
---       and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
---       and not require("luasnip").session.jump_active
---     then
---       require("luasnip").unlink_current()
---     end
---   end,
--- })

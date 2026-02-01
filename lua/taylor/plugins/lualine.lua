@@ -4,22 +4,21 @@ return {
   dependencies = { "echasnovski/mini.icons" },
   config = function()
     local colors = {
-      -- bg = "#16181a", -- for non-transparent
-      bg = "NONE",       -- for transparent
-      bgAlt = "#1e2124",
-      bgHighlight = "#3c4048",
-      fg = "#e6e6e6",
-      white = "#fcfcfc",
-      grey = "#7b8496",
-      blue = "#4aacfc",
-      green = "#5eff6c",
-      cyan = "#4DF0FF",
-      red = "#f65866",
-      yellow = "#fad773",
-      magenta = "#ff5ef1",
-      pink = "#ff5ea0",
-      orange = "#f79811",
-      purple = "#cd6beb",
+        bg = "#0a0a0a",
+        none = "NONE",
+        bg_alt = "#252525",
+        bg_highlight = "#30343b",
+        fg = "#ffffff",
+        grey = "#7b8496",
+        blue = "#0f8ef5",
+        green = "#5eff6c",
+        cyan = "#4df0ff",
+        red = "#ff6e5e",
+        yellow = "#f0c348",
+        magenta = "#ff5ef1",
+        pink = "#ff5ea0",
+        orange = "#f79811",
+        purple = "#c472ed",
     }
 
     local copilot_colors = {
@@ -31,32 +30,32 @@ return {
 
     local cyberdream_theme = {
       normal = {
-        a = { fg = colors.blue, bg = colors.bg, gui = "bold" },
-        b = { fg = colors.cyan, bg = colors.bg },
-        c = { fg = colors.fg, bg = colors.bg },
-        x = { fg = colors.fg, bg = colors.bg },
-        y = { fg = colors.magenta, bg = colors.bg },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.blue, bg = colors.none, gui = "bold" },
+        b = { fg = colors.cyan, bg = colors.none },
+        c = { fg = colors.fg, bg = colors.none },
+        x = { fg = colors.fg, bg = colors.none },
+        y = { fg = colors.magenta, bg = colors.none },
+        z = { fg = colors.grey, bg = colors.none },
       },
       insert = {
-        a = { fg = colors.green, bg = colors.bg, gui = "bold" },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.green, bg = colors.none, gui = "bold" },
+        z = { fg = colors.grey, bg = colors.none },
       },
       visual = {
-        a = { fg = colors.magenta, bg = colors.bg, gui = "bold" },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.magenta, bg = colors.none, gui = "bold" },
+        z = { fg = colors.grey, bg = colors.none },
       },
       command = {
-        a = { fg = colors.yellow, bg = colors.bg, gui = "bold" },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.yellow, bg = colors.none, gui = "bold" },
+        z = { fg = colors.grey, bg = colors.none },
       },
       replace = {
-        a = { fg = colors.red, bg = colors.bg, gui = "bold" },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.red, bg = colors.none, gui = "bold" },
+        z = { fg = colors.grey, bg = colors.none },
       },
       terminal = {
-        a = { fg = colors.green, bg = colors.bg, gui = "bold" },
-        z = { fg = colors.grey, bg = colors.bg },
+        a = { fg = colors.green, bg = colors.none, gui = "bold" },
+        z = { fg = colors.grey, bg = colors.none },
       },
     }
 
@@ -144,6 +143,7 @@ return {
             "dap-view-term",
             "snacks_dashboard",
             "snacks_picker_list",
+            "snacks_picker_input",
             "trouble",
             "checkhealth"
           },

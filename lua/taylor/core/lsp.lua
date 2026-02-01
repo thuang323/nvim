@@ -66,6 +66,7 @@ vim.lsp.enable({
   "pyright",
   "emmet_ls",
   "ts_ls",
+  "dartls",
   "tailwindcss",
   "texlab",
 })
