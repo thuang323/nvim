@@ -37,7 +37,7 @@ return {
         filetypes = {
           toggleterm = false,
           TelescopePrompt = false,
-          -- yaml = false,
+          yaml = true,
           -- markdown = false,
           -- help = false,
           -- gitcommit = false,

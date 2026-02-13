@@ -37,7 +37,7 @@ return {
 				"vimdoc",
 				"dockerfile",
 				"query",
-				"norg",
+				-- "norg",
 			},
 		},
 		config = function(_, opts)

@@ -54,9 +54,6 @@ return {
             bg_highlight = "#30343b",
           },
         },
-        -- highlights = {
-        --   DiffViewDiffAddAsDelete = { fg = cyberdream_colors.blue, bg = cyberdream_colors.bg },
-        -- },
 
         -- override a highlight group entirely
         overrides = function(colors)
@@ -71,15 +68,23 @@ return {
             FloatFooter = { bg = "NONE" },
 
             Keyword = { fg = cyberdream_colors.purple },
-            ["@keyword.type"] = { fg = cyberdream_colors.purple, italic = true },
             Type = { fg = cyberdream_colors.yellow },
-            ["@module"] = { fg = cyberdream_colors.yellow },
             Boolean = { fg = cyberdream_colors.orange },
             Constant = { fg = cyberdream_colors.yellow },
+            ["@module"] = { fg = cyberdream_colors.yellow },
+            ["@keyword.type"] = { fg = cyberdream_colors.purple, italic = true },
             ["@constant.builtin"] = { fg = cyberdream_colors.yellow },
             ["@constructor"] = { fg = cyberdream_colors.blue },
+            ["@variable"] = { fg = cyberdream_colors.red },
+            ["@variable.builtin"] = { fg = cyberdream_colors.yellow },
 
-            -- ["@property"] = { fg = colors.magenta, bold = true },
+            ["@lsp.type.property"] = { fg = cyberdream_colors.cyan },
+            ["@lsp.type.macro"] = { fg = cyberdream_colors.orange },
+            ["@lsp.type.parameter"] = { fg = cyberdream_colors.red },
+            ["@lsp.type.enumMember"] = { fg = cyberdream_colors.cyan },
+            ["@lsp.type.annotation"] = { fg = cyberdream_colors.cyan },
+            ["@lsp.typemod.variable.static"] = { fg = cyberdream_colors.orange },
+
 
             -- Snacks
             SnacksDashboardNormal = { link = "Normal" },
@@ -93,10 +98,6 @@ return {
 
             -- GitSigns
             GitSignsChange = { fg = cyberdream_colors.blue },
-
-            -- Diffview
-            -- DiffDelete = { fg = cyberdream_colors.grey, bg = "#442927" },
-            -- DiffViewDiffAddAsDelete = { fg = cyberdream_colors.blue, bg = cyberdream_colors.bg },
           }
         end,
 
@@ -142,7 +143,6 @@ return {
   --         ["@operator"] = { fg = colors.fg },
   --         -- ["@operator"] = { fg = "#32d7e6" },
   --         ["@type"] = { link = "Type" },
-  --         ["@boolean"] = { fg = colors.orange },
   --         ["@type.builtin"] = { fg = colors.purple },
   --         ["@type.definition"] = { fg = colors.purple },
   --         ["@type.qualifier"] = { fg = colors.purple },
@@ -166,10 +166,6 @@ return {
   --         ["@lsp.type.parameter"] = { fg = colors.red },
   --         -- ["@lsp.type.bracket"] = { fg = colors.purple },
   --         ["@lsp.type.enumMember"] = { fg = colors.cyan },
-  --         -- ["@lsp.type.operator"] = { fg = colors.purple },
-  --         -- ["@lsp.mod.userDefined"] = { fg = colors.blue },
-  --         -- ["@lsp.typemod.operator.userDefined"] = { fg = colors.fg },
-  --         -- ["@lsp.typemod.operator.userDefined"] = { fg = colors.blue },
   --         ["@lsp.mod.constructor"] = { fg = colors.blue },
   --         ["@lsp.typemod.variable.static"] = { fg = colors.orange },
   --         -- ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.red },
@@ -184,18 +180,6 @@ return {
   --         ["@type.builtin.python"] = { fg = colors.yellow },
   --         -- ["@function.builtin.python"] = { fg = colors.blue },
   --
-  --         ["@odp.base_constructor.python"] = { fg = colors.cyan },
-  --         ["@odp.import_module.python"] = { fg = colors.fg },
-  --         ["@odp.constructor.python"] = { link = "@constructor.python" },
-  --         ["@odp.keyword.class.python"] = { link = "@keyword.function.python" },
-  --         ["@odp.function.builtin.python"] = { fg = colors.cyan },
-  --         -- ["@odp.decorator.python"] = { link = "@function" },
-  --         -- ["@odp.decorator.function.python"] = { link = "@function" },
-  --         -- ["@odp.import_from.python"] = { fg = theme.palette.purple, style = config.styles.keywords },
-  --         -- ["@odp.interpolation.python"] = { fg = theme.palette.red, style = config.styles.parameters },
-  --         -- ["@odp.keyword.python"] = { style = config.styles.keywords },
-  --         -- ["@odp.operator.splat.python"] = { fg = theme.palette.fg },
-  --         -- ["@odp.punctuation.special.python"] = { fg = theme.palette.purple },
   --
   --         -- javascript highlights
   --         ["@variable.javascript"] = { fg = colors.red },
@@ -217,15 +201,11 @@ return {
   --         ["@punctuation.special.typescript"] = { fg = colors.orange },
   --         ["@type.builtin.typescript"] = { fg = colors.yellow },
   --         ["@variable.builtin.typescript"] = { fg = colors.yellow },
-  --         -- ["@odp.operator.fat_arrow.typescript"] = { fg = colors.purple },
-  --         -- ["@odp.property.function.typescript"] = { link = "@function.typescript" },
   --         ["@lsp.type.typeParameter.typescript"] = { fg = colors.yellow },
   --
   --         -- json/jsonc highlights
   --         ["@property.json"] = { fg = colors.red },
-  --         ["@odp.braces.json"] = { fg = colors.purple },
   --         ["@property.jsonc"] = { fg = colors.red },
-  --         ["@odp.braces.jsonc"] = { fg = colors.purple },
   --
   --         -- cpp highlights
   --         ["@lsp.typemod.variable.defaultLibrary.cpp"] = { fg = colors.red },
