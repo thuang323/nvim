@@ -19,17 +19,16 @@
 -- 	end,
 -- })
 
-
 vim.diagnostic.config({
-    virtual_text = false,
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.HINT] = "󰌵 ",
-            [vim.diagnostic.severity.INFO] = " "
-        }
-    }
+	virtual_text = false,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = "󰌵 ",
+			[vim.diagnostic.severity.INFO] = " ",
+		},
+	},
 })
 
 -- <C-]>        go to definition
@@ -63,12 +62,26 @@ vim.lsp.config("*", {
 
 -- Enable each language server by filename under the lsp/ folder
 vim.lsp.enable({
-  "lua_ls",
-  "clangd",
-  "pyright",
-  "emmet_ls",
-  "ts_ls",
-  "dartls",
-  "tailwindcss",
-  "texlab",
+	"lua_ls",
+	"clangd",
+	"pyright",
+	"emmet_ls",
+	"dartls",
+	"tailwindcss",
+	"texlab",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function(args)
+		local is_deno = vim.fs.root(args.buf, { "deno.json", "deno.jsonc" })
+
+		if is_deno then
+			-- If it's a Deno project, only enable denols
+			vim.lsp.enable("denols")
+		else
+			-- Otherwise, enable the standard TypeScript server
+			vim.lsp.enable("ts_ls")
+		end
+	end,
 })

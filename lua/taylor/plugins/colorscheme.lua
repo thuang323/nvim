@@ -103,7 +103,7 @@ return {
 
         -- Disable or enable colorscheme extensions
         extensions = {
-          markview = false,
+          -- markview = false,
         },
       })
       vim.cmd("colorscheme cyberdream")
